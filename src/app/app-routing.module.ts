@@ -10,6 +10,7 @@ import { ExportXmlComponent } from './export-xml/export-xml.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.component';
 import { FutureInwardStockMovementsComponent } from './future-inward-stock-movements/future-inward-stock-movements.component';
+import { PurchasePartDispositionComponent } from './purchase-part-disposition/purchase-part-disposition.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'warehouse_stock', component: WarehouseStockComponent},
   { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent},
+  { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent},
 ];
 
 @NgModule({
