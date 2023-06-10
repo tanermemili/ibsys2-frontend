@@ -1,2 +1,22 @@
-<h2>Login</h2>
-
+<div class="wrapper">
+    <div class="form-box login">
+        <h2>Login</h2>
+        <form action="#">
+            <div class="input-box">
+                <span class="icon"></span>
+                <input type="email" required>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"></span>
+                <input type="password" required>
+                <label>Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">
+                    Remember me</label>
+            </div>
+            <button [routerLink]="['/dashboard']">Login</button>
+        </form>
+    </div>
+</div>
