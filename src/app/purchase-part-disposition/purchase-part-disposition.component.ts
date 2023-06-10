@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PurchasePart, PurchasePartDispositionService } from './purchasePartDisposition.service';
+import log from 'loglevel';
 
 @Component({
   selector: 'app-purchase-part-disposition',
@@ -18,6 +19,7 @@ export class PurchasePartDispositionComponent {
   getPurchaseParts() {
     this.connectionService.getPurchaseParts().subscribe(data => {
       this.purchaseparts = data;
+      log.debug('PurchasePartDisposition.purchasepartdisposition: data=', data);
     });
   }
 }
