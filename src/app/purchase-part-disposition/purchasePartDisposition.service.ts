@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 import log from 'loglevel';
 
 export interface PurchasePart {
@@ -29,7 +29,8 @@ export class PurchasePartDispositionService {
   }
 
   public getPurchaseParts(): Observable<PurchasePart[]> {
-    log.debug('PurchasePartDispositionService.purchasepartdisposition');
-    return this.http.get<PurchasePart[]>(this.url);
+    return this.http
+      .get<PurchasePart[]>(this.url)
+      .pipe(tap(result => log.debug('finished GET /api/purchasepartdisposition, result:', result)));
   }
 }

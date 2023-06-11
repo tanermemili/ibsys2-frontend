@@ -10,16 +10,15 @@ import log from 'loglevel';
 export class PurchasePartDispositionComponent {
   purchaseparts: PurchasePart[] | undefined;
 
-  constructor(private connectionService: PurchasePartDispositionService) {}
+  constructor(private purchasePartDispositionService: PurchasePartDispositionService) {}
 
   ngOnInit() {
     this.getPurchaseParts();
   } 
 
   getPurchaseParts() {
-    this.connectionService.getPurchaseParts().subscribe(data => {
+    this.purchasePartDispositionService.getPurchaseParts().subscribe(data => {
       this.purchaseparts = data;
-      log.debug('PurchasePartDisposition.purchasepartdisposition: data=', data);
     });
   }
 }
