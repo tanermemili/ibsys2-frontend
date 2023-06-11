@@ -1,3 +1,10 @@
 <h2>Bestand</h2>
-<a routerLink="/warehouse_stock">Lagerbestand</a>
-<a routerLink="/future_inward_stock_movements">Offene Bestellungen</a>
+<button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+    <mat-icon>inventory</mat-icon>
+    Lagerbestand
+</button>
+
+<button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+    <mat-icon>shopping_cart</mat-icon>
+    Offene Bestellungen
+</button>

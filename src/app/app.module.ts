@@ -15,6 +15,8 @@ import { PlanningComponent } from './planning/planning.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {MatInputModule} from '@angular/material/input';
     BrowserAnimationsModule,
     MatFormFieldModule, 
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatStepperModule,
 
   ],
   providers: [],
