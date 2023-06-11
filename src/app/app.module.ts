@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { StockOverviewComponent } from './stock-overview/stock-overview.componen
 import { ExportXmlComponent } from './export-xml/export-xml.component';
 import { PlanningComponent } from './planning/planning.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PurchasePartDispositionComponent } from './purchase-part-disposition/purchase-part-disposition.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { ProfileComponent } from './profile/profile.component';
     StockOverviewComponent,
     ExportXmlComponent,
     PlanningComponent,
-    ProfileComponent
+    ProfileComponent,
+    PurchasePartDispositionComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
