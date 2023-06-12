@@ -1,1 +1,294 @@
 <h2>Planung</h2>
+<div class="example-input-wrapper">
+    <label for="duration">Animation duration:</label>
+    <input id="duration" value="2000" type="number" min="0" step="100" #duration>
+  </div>
+<mat-stepper orientation="vertical" [animationDuration]="duration.value">
+    <mat-step>
+      <ng-template matStepLabel>Prognose, Produktionseingabe und Lagerprognose</ng-template>
+      <ng-template matStepContent>
+        <p>Prognose</p>
+        <table>
+            <tr>
+                <th>Diese Woche</th>
+                <th>Periode +1</th>
+                <th>Periode +2</th>
+                <th>Periode +3</th>
+            </tr>
+        </table>
+
+        <p>Produktionseingabe</p>
+        <table>
+            <tr>
+                <th>Diese Woche</th>
+                <th>Periode +1</th>
+                <th>Periode +2</th>
+                <th>Periode +3</th>
+            </tr>
+        </table>
+
+        <p>Lagerprognose</p>
+        <table>
+            <tr>
+                <th>Diese Woche</th>
+                <th>Periode +1</th>
+                <th>Periode +2</th>
+                <th>Periode +3</th>
+            </tr>
+        </table>
+
+        <button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+            <mat-icon>inventory</mat-icon>
+            Lagerbestand anzeigen
+        </button>
+
+        <button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+            <mat-icon>playlist_add</mat-icon>
+            Zusatzafuträge anzeigen
+        </button>
+
+        <button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+            <mat-icon>refresh</mat-icon>
+        </button>
+
+        <button mat-raised-button color="accent" matStepperNext>
+            weiter
+        </button>
+
+      </ng-template>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Disposition Eigenfertigung</ng-template>
+      <ng-template matStepContent>
+
+        <table>
+            <tr>
+                <th>Vertriebswunsch</th>
+                <th>Warteschlange</th>
+                <th>Geplanter Sicherheitsbestand</th>
+                <th>Lagerbestand Ende Vorperiode</th>
+                <th>Aufträge Warteschlange</th>
+                <th>Aufträge in Bearbeitung</th>
+                <th>Produktion für kommende Periode</th>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Vertriebswunsch</th>
+                <th>Warteschlange</th>
+                <th>Geplanter Sicherheitsbestand</th>
+                <th>Lagerbestand Ende Vorperiode</th>
+                <th>Aufträge Warteschlange</th>
+                <th>Aufträge in Bearbeitung</th>
+                <th>Produktion für kommende Periode</th>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <th>Vertriebswunsch</th>
+                <th>Warteschlange</th>
+                <th>Geplanter Sicherheitsbestand</th>
+                <th>Lagerbestand Ende Vorperiode</th>
+                <th>Aufträge Warteschlange</th>
+                <th>Aufträge in Bearbeitung</th>
+                <th>Produktion für kommende Periode</th>
+            </tr>
+        </table>
+
+        <button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+            <mat-icon>refresh</mat-icon>
+        </button>
+
+        <button mat-raised-button color="accent" matStepperPrevious>zurück</button>
+
+        <button mat-raised-button color="accent" matStepperNext>
+            weiter
+        </button>
+
+      </ng-template>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Kaufteildisposition</ng-template>
+      <p>Produktionsprogramm</p>
+        <table>
+            <tr>
+                <th>Diese Woche</th>
+                <th>Periode +1</th>
+                <th>Periode +2</th>
+                <th>Periode +3</th>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <th>Anfangsbestand</th>
+                <th>Ausstehende Bestellungen</th>
+                <th>in</th>
+                <p>Verwendung in</p>
+                <th>P1</th>
+                <th>P2</th>
+                <th>P3</th>
+                <th>Lieferfrist</th>
+                <th>und Abweichung</th>
+                <p>Bruttobedarf in Periode</p>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>Diskontmenge</th>
+                <th>Bestellmenge</th>
+                <th>Bestellart</th>
+                <th>Status</th>
+            </tr>
+        </table>
+
+      <button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+        <mat-icon>inventory</mat-icon>
+        Lagerbestand anzeigen
+    </button>
+
+    <button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+        <mat-icon>refresh</mat-icon>
+    </button>
+
+    <button mat-raised-button color="accent" matStepperPrevious>zurück</button>
+
+    <button mat-raised-button color="accent" matStepperNext>
+        weiter
+    </button>
+
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Kapazitätsbedarf</ng-template>
+        <table>
+            <tr>
+                <th>Auftragsmenge</th>
+                <p>Arbeitsplatz</p>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+                <th>13</th>
+                <th>14</th>
+                <th>15</th>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <p>Arbeitsplatz</p>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+                <th>13</th>
+                <th>14</th>
+                <th>15</th>
+            </tr>
+        </table>
+
+        <button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+            <mat-icon>inventory</mat-icon>
+            Lagerbestand anzeigen
+        </button>
+
+        <button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+            <mat-icon>refresh</mat-icon>
+        </button>
+
+        <button mat-raised-button color="accent" matStepperPrevious>zurück</button>
+
+        <button mat-raised-button color="accent" matStepperNext>
+            weiter
+        </button>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Eingabetabelle</ng-template>
+        <p>Vertriebswunsch</p>
+        <table>
+            <tr>
+                <th>Diese Woche</th>
+                <th>Periode +1</th>
+                <th>Periode +2</th>
+                <th>Periode +3</th>
+            </tr>
+        </table>
+
+        <p>Direktverkauf</p>
+        <table>
+            <tr>
+                <th>Diese Woche</th>
+                <th>Preis/Einheit</th>
+                <th>Strafe</th>
+            </tr>
+        </table>
+
+        <p>Kapazitätsbedarf</p>
+        <table>
+            <tr>
+                <p>Arbeitsplatz</p>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+                <th>13</th>
+                <th>14</th>
+                <th>15</th>
+            </tr>
+        </table>
+
+        <p>Bestellungen</p>
+        <table>
+            <tr>
+                <th>Artikel</th>
+                <th>Anzahl</th>
+                <th>Liefermodus</th>
+            </tr>
+        </table>
+
+        <p>Fertigungsaufträge</p>
+        <table>
+            <tr>
+                <th>Artikel</th>
+                <th>Anzahl</th>
+            </tr>
+        </table>
+        
+        <button mat-raised-button color="accent" matStepperPrevious>zurück</button>
+        <button mat-raised-button color="accent" [routerLink]="['/dashboard']">
+            <mat-icon>checkmark</mat-icon>
+            speichern
+        </button>
+      </mat-step>
+
+
+  </mat-stepper>
