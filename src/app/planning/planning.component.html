@@ -1,4 +1,4 @@
-<h2>Planung</h2>
+<h2>Planung</h2> 
 <div class="example-input-wrapper">
     <label for="duration">Animation duration:</label>
     <input id="duration" value="2000" type="number" min="0" step="100" #duration>
@@ -9,27 +9,66 @@
       <ng-template matStepContent>
         <p>Prognose</p>
         <table>
-            <tr>
+            <thead>
+              <tr>
+                <th>Artikel</th>
                 <th>Diese Woche</th>
                 <th>Periode +1</th>
                 <th>Periode +2</th>
                 <th>Periode +3</th>
-            </tr>
-        </table>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of tableData">
+                <td>{{ item.artikel }}</td>
+                <td><input [(ngModel)]="item.dieseWoche" type="number" /></td>
+                <td><input [(ngModel)]="item.periode1" type="number" /></td>
+                <td><input [(ngModel)]="item.periode2" type="number" /></td>
+                <td><input [(ngModel)]="item.periode3" type="number" /></td>
+              </tr>
+              <tr>
+                <td>Summe</td>
+                <td>{{ calculateColumnSum('dieseWoche') }}</td>
+                <td>{{ calculateColumnSum('periode1') }}</td>
+                <td>{{ calculateColumnSum('periode2') }}</td>
+                <td>{{ calculateColumnSum('periode3') }}</td>
+              </tr>
+            </tbody>
+          </table>
 
         <p>Produktionseingabe</p>
         <table>
-            <tr>
+            <thead>
+              <tr>
+                <th>Artikel</th>
                 <th>Diese Woche</th>
                 <th>Periode +1</th>
                 <th>Periode +2</th>
                 <th>Periode +3</th>
-            </tr>
-        </table>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of tableData">
+                <td>{{ item.artikel }}</td>
+                <td><input [(ngModel)]="item.dieseWoche" type="number" /></td>
+                <td><input [(ngModel)]="item.periode1" type="number" /></td>
+                <td><input [(ngModel)]="item.periode2" type="number" /></td>
+                <td><input [(ngModel)]="item.periode3" type="number" /></td>
+              </tr>
+              <tr>
+                <td>Summe</td>
+                <td>{{ calculateColumnSum('dieseWoche') }}</td>
+                <td>{{ calculateColumnSum('periode1') }}</td>
+                <td>{{ calculateColumnSum('periode2') }}</td>
+                <td>{{ calculateColumnSum('periode3') }}</td>
+              </tr>
+            </tbody>
+          </table>
 
         <p>Lagerprognose</p>
         <table>
             <tr>
+                <th>Artikel</th>
                 <th>Diese Woche</th>
                 <th>Periode +1</th>
                 <th>Periode +2</th>
@@ -292,3 +331,31 @@
 
 
   </mat-stepper>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Artikel</th>
+        <th>Diese Woche</th>
+        <th>Periode +1</th>
+        <th>Periode +2</th>
+        <th>Periode +3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tableData">
+        <td>{{ item.artikel }}</td>
+        <td><input [(ngModel)]="item.dieseWoche" type="number" /></td>
+        <td><input [(ngModel)]="item.periode1" type="number" /></td>
+        <td><input [(ngModel)]="item.periode2" type="number" /></td>
+        <td><input [(ngModel)]="item.periode3" type="number" /></td>
+      </tr>
+      <tr>
+        <td>Summe</td>
+        <td>{{ calculateColumnSum('dieseWoche') }}</td>
+        <td>{{ calculateColumnSum('periode1') }}</td>
+        <td>{{ calculateColumnSum('periode2') }}</td>
+        <td>{{ calculateColumnSum('periode3') }}</td>
+      </tr>
+    </tbody>
+  </table>

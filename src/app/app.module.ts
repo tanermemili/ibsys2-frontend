@@ -19,6 +19,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { PurchasePartDispositionComponent } from './purchase-part-disposition/purchase-part-disposition.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
 import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.component';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,12 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     MatIconModule,
     MatStepperModule,
     HttpClientModule,
+    MatTableModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    FormsModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
