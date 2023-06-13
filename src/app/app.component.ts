@@ -16,6 +16,5 @@ export class AppComponent {
 
   ngOnInit() {
     log.enableAll();
-    this.inputService.initializeInput();
   }
 }

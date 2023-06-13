@@ -23,6 +23,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     PlanningComponent,
     ProfileComponent,
     PurchasePartDispositionComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,

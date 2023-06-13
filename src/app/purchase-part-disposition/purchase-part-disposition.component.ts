@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { PurchasePart, PurchasePartDispositionService } from './purchasePartDisposition.service';
 import log from 'loglevel';
+import { PurchasePart, PurchasePartDispositionService } from './purchasePartDisposition.service';
 
 @Component({
   selector: 'app-purchase-part-disposition',
