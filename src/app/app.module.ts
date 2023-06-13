@@ -19,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PurchasePartDispositionComponent } from './purchase-part-disposition/purchase-part-disposition.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
 import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     PlanningComponent,
     ProfileComponent,
     PurchasePartDispositionComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
