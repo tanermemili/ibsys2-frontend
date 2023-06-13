@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import log from 'loglevel';
 import { XMLParser } from 'fast-xml-parser';
+import log from 'loglevel';
+import { Observable, tap } from 'rxjs';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -50,20 +51,18 @@ export class InputService {
     preserveOrder: false
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private messageService: MessageService) {
     log.debug('InputService.constructor()');
   }
 
-  public initializeInput() {
-    this.readXMLFile('/assets/input.xml').subscribe(xmlContent => {
-      let parsedJSON = this.parseXmlToJson(xmlContent);
-      let inputJSON = this.buildJSON(parsedJSON);
-      this.setInput(inputJSON).subscribe();
-    });
-  }
-
-  private readXMLFile(path: string): Observable<string> {
-    return this.http.get(path, {responseType: 'text' as 'text'});
+  public initializeInput(xml: string) {
+    let parsedJSON = this.parseXmlToJson(xml);
+    let inputJSON = this.buildJSON(parsedJSON);
+    this.setInput(inputJSON).subscribe(
+      res => log.debug('/api/input response', res),
+      err => log.debug('/api/input Error', err),
+      () => this.messageService.add('/api/input request completed.')
+    );
   }
 
   private parseXmlToJson(xml: string) {    
@@ -114,7 +113,6 @@ export class InputService {
 
   private setInput(input: Object): Observable<Object> {
     return this.http
-      .post<Object>(this.url, input, this.httpOptions)
-      .pipe(tap(_ => log.debug('finished POST /api/input')));
+      .post<Object>(this.url, input, this.httpOptions);
   }
 }
