@@ -1,12 +1,44 @@
-<nav>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/import_xml">Import XML</a>
-    <a routerLink="/stock_overview">Bestand</a>
-    <a routerLink="/planning">Planung</a>
-    <a routerLink="/export_xml">Export XML</a>
-    <a routerLink="/profile">Mein Profil</a>
-    <a routerLink="/purchase_part_disposition">GET: Vorschläge zur Kaufteildisposition (PurchasePartDisposition)</a>
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<mat-drawer-container class="sidenav-container">
+    <mat-drawer #drawer class="app-sidenav" mode="side" opened="true">
+      
+        <button class="chevron-button" type="button" mat-button (click)="isExpanded = !isExpanded"
+        [ngClass]="{'rotated': isExpanded}">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+
+      <p> <button mat-button routerLink="/dashboard">
+            <mat-icon>language</mat-icon>
+            <span *ngiIf="isExpanded"> Dashboard</span>
+            </button></p>
+        <p> <button mat-button routerLink="/import_xml">
+            <mat-icon>download</mat-icon>
+            <span *ngiIf="isExpanded">Import-XML</span>
+            </button></p>
+        <p> <button mat-button routerLink="/warehouse_stock">
+            <mat-icon>inventory_2</mat-icon>
+            <span *ngiIf="isExpanded"> Bestand</span>
+            </button></p>
+        <p> <button mat-button routerLink="/planning">
+            <mat-icon>linear_scale</mat-icon>
+            <span *ngiIf="isExpanded"> Planung</span>
+            </button></p>
+        <p> <button mat-button routerLink="/export_xml">
+            <mat-icon>upload</mat-icon>
+            <span *ngiIf="isExpanded"> Export-XML</span>
+            </button></p>
+        <p> <button mat-button routerLink="/profile">
+            <mat-icon>exit_to_app</mat-icon>
+             Mein Profil
+            </button></p>
+        <p> <button mat-button routerLink="/login">
+            <mat-icon>logout</mat-icon>
+            <span *ngiIf="isExpanded">Logout</span>
+            </button></p>
+    </mat-drawer>
+  
+    <div class="sidenav-content">
+        <router-outlet></router-outlet>
+         <app-messages></app-messages>
+    </div>
+  
+  </mat-drawer-container>
