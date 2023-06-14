@@ -5,7 +5,7 @@
     align-items: center;
   }
   
-  .sidenav-content {
+.sidenav-content {
     display: flex;
     height: 100%;
     width: 100%;
@@ -14,17 +14,17 @@
     }
 
   
-  .app-sidenav {
+.app-sidenav {
     padding-right: 20px;
   }
 
- .chevron-button {
+.chevron-button {
     transition: _transform 300ms ease-in-out;
     transition: rotate(0deg); 
     position: absolute;
   }
 
-  .chevron-button.rotated {
+.chevron-button.rotated {
     transform: rotate(180deg);
     }
      
