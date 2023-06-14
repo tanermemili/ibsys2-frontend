@@ -18,16 +18,14 @@
     padding-right: 20px;
   }
 
- .chevronbutton {
-    transition: _transform 0.3s ease-in-out;
+ .chevron-button {
+    transition: _transform 300ms ease-in-out;
     transition: rotate(0deg); 
-    right: 0;
-    float: right;
     position: absolute;
   }
 
-  .chevronbutton.rotated {
-    transition: rotate(180deg);
+  .chevron-button.rotated {
+    transform: rotate(180deg);
     }
      
   
