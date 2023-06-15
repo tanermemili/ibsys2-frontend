@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import log from 'loglevel';
 import { InputService } from './input.service';
 
@@ -7,8 +7,11 @@ import { InputService } from './input.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements  OnInit {
   title = 'ibsys-angular';
+
+ isExpanded: boolean = false;
+
 
   constructor(private inputService: InputService) {
     log.debug('AppComponent.constructor()');

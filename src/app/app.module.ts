@@ -24,6 +24,10 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './messages/messages.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -53,9 +57,11 @@ import { MessagesComponent } from './messages/messages.component';
     MatTableModule,
     MatNativeDateModule,
     MatPaginatorModule,
-    FormsModule
-
-
+    FormsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
