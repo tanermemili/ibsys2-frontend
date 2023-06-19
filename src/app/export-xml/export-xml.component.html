@@ -10,35 +10,5 @@
     XML runterladen
 </button> -->
 
-<script>
-    const api_url = 'http://localhost:8080/api/output';
-    async function getExport() {
-        const response = await fetch(api_url);
-        const data = await response.json();
-        console.log(data);
-    }
-
-    getExport();
-</script>
-
-<script>
-fetch('https://api.wheretheiss.at/v1/satellites/25544')
-  .then(response => response.json()) // Die Antwort als JSON interpretieren
-  .then(data => {
-    console.log(data); // Daten in der Konsole ausgeben
-  })
-  .catch(error => {
-    console.error('Fehler beim Abrufen der Daten:', error);
-  });
-</script>
-
-<script>
-    fetch('http://localhost:8080/api/output')
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Fehler beim Abrufen der Daten:', error);
-  });
-</script>
+<button (click)="fetchData()">Daten abrufen</button>
+<!-- <button (click)="parsejsontoxml()">Andrew</button> -->
