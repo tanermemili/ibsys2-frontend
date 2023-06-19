@@ -1,6 +1,6 @@
 <h2>Export</h2>
 
-<button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
+<!-- <button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
     <mat-icon>search</mat-icon>
     XML anzeigen
 </button>
@@ -8,4 +8,37 @@
 <button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
     <mat-icon>download</mat-icon>
     XML runterladen
-</button>
+</button> -->
+
+<script>
+    const api_url = 'http://localhost:8080/api/output';
+    async function getExport() {
+        const response = await fetch(api_url);
+        const data = await response.json();
+        console.log(data);
+    }
+
+    getExport();
+</script>
+
+<script>
+fetch('https://api.wheretheiss.at/v1/satellites/25544')
+  .then(response => response.json()) // Die Antwort als JSON interpretieren
+  .then(data => {
+    console.log(data); // Daten in der Konsole ausgeben
+  })
+  .catch(error => {
+    console.error('Fehler beim Abrufen der Daten:', error);
+  });
+</script>
+
+<script>
+    fetch('http://localhost:8080/api/output')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('Fehler beim Abrufen der Daten:', error);
+  });
+</script>
