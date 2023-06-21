@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ExportXmlService } from './export-xml.service';
+import { OutputService } from './output.service';
 
-describe('ExportXmlService', () => {
-  let service: ExportXmlService;
+describe('OutputService', () => {
+  let service: OutputService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ExportXmlService);
+    service = TestBed.inject(OutputService);
   });
 
   it('should be created', () => {

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { XMLParser } from 'fast-xml-parser';
 import { fileURLToPath } from 'url';
 import { XmlMapperService } from '../xml-mapper.service';
-import { ExportXmlService } from './export-xml.service';
+import { OutputService } from '../output.service';
 import log from 'loglevel';
 
 @Component({
@@ -13,10 +13,10 @@ import log from 'loglevel';
 })
 export class ExportXmlComponent {
 
-  constructor(private http: HttpClient, private xmlMapperService: XmlMapperService, private exportXmlService: ExportXmlService) {}
+  constructor(private http: HttpClient, private xmlMapperService: XmlMapperService, private outputService: OutputService) {}
   
   fetchData() {
-    this.exportXmlService.getOutput().subscribe({
+    this.outputService.getOutput().subscribe({
       next: (data) => {
         log.debug('/api/input successful');
         const originalString = (data as string);
