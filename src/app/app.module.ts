@@ -27,6 +27,7 @@ import { MessagesComponent } from './messages/messages.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import { DispositionEigenfertigungComponent } from './planning/disposition-eigenfertigung/disposition-eigenfertigung.component';
 import { ForecastComponent } from './planning/forecast/forecast.component';
 
 
@@ -47,10 +48,11 @@ import { ForecastComponent } from './planning/forecast/forecast.component';
     ForecastComponent,
   ],
   imports: [
+    DispositionEigenfertigungComponent,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatFormFieldModule, 
+    MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
     MatIconModule,
@@ -63,7 +65,7 @@ import { ForecastComponent } from './planning/forecast/forecast.component';
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
