@@ -27,6 +27,9 @@ export class InputService {
     "results.idletimecosts.workplace.waitinglist",
     "results.waitinglistworkstations.workplace",
     "results.waitinglistworkstations.workplace.waitinglist",
+    "results.waitingliststock",
+    "results.waitingliststock.missingpart.workplace",
+    "results.waitingliststock.missingpart.workplace.waitinglist",
     "results.ordersinwork.workplace",
     "results.completedorders.order",
     "results.completedorders.order.batch",
@@ -72,13 +75,24 @@ export class InputService {
   }
 
   private buildJSON(parsedJSON: any) {
+    log.debug('Parsed JSON:', parsedJSON);
 
     // delete "results" in json
-    let inputJSON = parsedJSON.results;
+    // let inputJSON = parsedJSON.results;
+    let inputJSON = JSON.parse(JSON.stringify(parsedJSON.results));
     
     // delete "order" in inwardstockmovement & futureinwardstockmovement
     inputJSON.inwardstockmovement = parsedJSON.results.inwardstockmovement.order;
     inputJSON.futureinwardstockmovement = parsedJSON.results.futureinwardstockmovement.order;
+    
+    // change "waitingliststock"
+    inputJSON.waitingliststock = [];
+    parsedJSON.results.waitingliststock.forEach((_: any, index: any) => {
+      inputJSON.waitingliststock.push(parsedJSON.results.waitingliststock[index].missingpart);
+    });
+    if (inputJSON.waitingliststock[0] == null) {
+      inputJSON.waitingliststock = [];
+    }
     
     // delete "workplace" waitinglistworkstations & ordersinwork
     inputJSON.waitinglistworkstations = parsedJSON.results.waitinglistworkstations.workplace;
@@ -87,23 +101,7 @@ export class InputService {
     // delete "order" in completedorders
     inputJSON.completedorders = parsedJSON.results.completedorders.order; 
 
-    // TODO: waitingliststock!!!!!!!!!!!!
-    inputJSON.waitingliststock = [
-      {
-        "id": 12,
-        "waitinglist": [
-          {
-            "period": 6,
-            "orderNumber": 38,
-            "firstbatch": 9,
-            "lastbatch": 14,
-            "item": 30,
-            "amount": 60,
-            "timeNeed": 300
-          }
-        ]
-      }
-    ];
+    log.debug('Input.json:', inputJSON);
     return inputJSON;
   }
 

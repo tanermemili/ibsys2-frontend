@@ -1,1 +1,22 @@
 <h2>Lagerbestand</h2>
+
+<table>
+    <tr>
+        <th>Artikel</th>
+        <th>Menge</th>
+        <th>Startmenge</th>
+        <th>Startmenge Prozentual</th>
+        <th>Preis</th>
+        <th>Lagerwert</th>
+    </tr>
+    <tr *ngFor="let warehousestock of warehousestocks">
+        <td>{{warehousestock.id}}</td>
+        <td>{{warehousestock.amount}}</td>
+        <td>{{warehousestock.startamount}}</td>
+        <td>{{warehousestock.pct}}</td>
+        <td>{{warehousestock.price}}</td>
+        <td>{{warehousestock.stockvalue}}</td>
+    </tr>
+</table>
+
+<button mat-raised-button color="accent" (click)="goBack()">zurück</button>
