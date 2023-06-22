@@ -19,6 +19,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { PurchasePartDispositionComponent } from './purchase-part-disposition/purchase-part-disposition.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
 import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.component';
+import { MessagesComponent } from './messages/messages.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +38,7 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     PlanningComponent,
     ProfileComponent,
     PurchasePartDispositionComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +50,10 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     MatIconModule,
     MatStepperModule,
     HttpClientModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
