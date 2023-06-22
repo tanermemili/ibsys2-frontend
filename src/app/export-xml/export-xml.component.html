@@ -1,11 +1,3 @@
 <h2>Export</h2>
 
-<button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
-    <mat-icon>search</mat-icon>
-    XML anzeigen
-</button>
-
-<button mat-raised-button color="accent" [routerLink]="['/warehouse_stock']">
-    <mat-icon>download</mat-icon>
-    XML runterladen
-</button>
+<button mat-raised-button color="accent" (click)="fetchData()">Daten abrufen</button>
