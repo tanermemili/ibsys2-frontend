@@ -27,6 +27,7 @@ import { MessagesComponent } from './messages/messages.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import { ForecastComponent } from './planning/forecast/forecast.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {MatListModule} from '@angular/material/list';
     ProfileComponent,
     PurchasePartDispositionComponent,
     MessagesComponent,
+    ForecastComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+<table>
+    <thead>
+        <tr>
+            <th>Artikel</th>
+            <th>Diese Woche</th>
+            <th>Periode +1</th>
+            <th>Periode +2</th>
+            <th>Periode +3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of forecast">
+            <td>{{ item.article }}</td>
+            <td><input [(ngModel)]="item.periodN" type="number" /></td>
+            <td><input [(ngModel)]="item.periodNplusOne" type="number" /></td>
+            <td><input [(ngModel)]="item.periodNplusTwo" type="number" /></td>
+            <td><input [(ngModel)]="item.periodNplusThree" type="number" /></td>
+        </tr>
+        <tr>
+            <td>Summe</td>
+            <td>{{ planningComponent.calculateColumnSum('dieseWoche') }}</td>
+            <td>{{ planningComponent.calculateColumnSum('periode1') }}</td>
+            <td>{{ planningComponent.calculateColumnSum('periode2') }}</td>
+            <td>{{ planningComponent.calculateColumnSum('periode3') }}</td>
+          </tr>
+    </tbody>
+</table>
