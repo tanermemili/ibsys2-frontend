@@ -19,10 +19,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { PurchasePartDispositionComponent } from './purchase-part-disposition/purchase-part-disposition.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
 import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.component';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './messages/messages.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import { ForecastComponent } from './planning/forecast/forecast.component';
 
 
 @NgModule({
@@ -39,6 +44,7 @@ import {MatListModule} from '@angular/material/list';
     ProfileComponent,
     PurchasePartDispositionComponent,
     MessagesComponent,
+    ForecastComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +56,10 @@ import {MatListModule} from '@angular/material/list';
     MatIconModule,
     MatStepperModule,
     HttpClientModule,
+    MatTableModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    FormsModule,
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
