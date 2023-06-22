@@ -10,7 +10,7 @@ import { InputService } from './input.service';
 export class AppComponent implements  OnInit {
   title = 'ibsys-angular';
 
- isExpanded: boolean = false;
+ isExpanded: boolean = true;
 
 
   constructor(private inputService: InputService) {
