@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface ForecastDataType {
@@ -17,6 +17,13 @@ export interface ForecastDataType {
 export class PlanningService {
   stepperDuration: string = '1000';
   private forecastGetUrl: string = '/api/productionplan/forecast';
+  private forecastPostUrl: string = '/api/productionplan/forecast/new';
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'responseType': 'text',
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +33,10 @@ export class PlanningService {
 
   getForecast(): Observable<Object> {
     return this.http.get<ForecastDataType[]>(this.forecastGetUrl);
+  }
+
+  saveForecast(input: any): Observable<Object> {
+    return this.http.post<Object>(this.forecastPostUrl, input, this.httpOptions);
   }
 
 }

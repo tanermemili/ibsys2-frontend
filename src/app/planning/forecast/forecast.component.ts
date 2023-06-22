@@ -30,4 +30,14 @@ export class ForecastComponent {
     });
   }
 
+  saveForecast(event: any) {
+    this.planningService.saveForecast(this.forecast).subscribe({
+      next: (v) => log.debug(v),
+      error: (e) => log.debug(e),
+      complete: () => {
+        log.debug('/api/productionplan/forecast/new completed');
+      }
+    });
+  }
+
 }
