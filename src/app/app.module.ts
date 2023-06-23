@@ -28,7 +28,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import { ForecastComponent } from './planning/forecast/forecast.component';
-import { ProdprogProdComponent } from './planning/prodprog-prod/prodprog-prod.component';
+import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
 import {MatTabsModule} from '@angular/material/tabs';
 
 
@@ -47,7 +47,6 @@ import {MatTabsModule} from '@angular/material/tabs';
     PurchasePartDispositionComponent,
     MessagesComponent,
     ForecastComponent,
-    ProdprogProdComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +65,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-    MatTabsModule
+    MatTabsModule,
+    ProdprogComponent
     
   ],
   providers: [],

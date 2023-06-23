@@ -1,51 +1,50 @@
 <mat-tab-group>
     <mat-tab label="Produktionsprogramm">
-        <table mat-table [dataSource]="dispositionEigenfertigungArticlesP1">
+        <table mat-table [dataSource]="ProdprogResult">
             <ng-container matColumnDef="articleNumber">
                 <th mat-header-cell *matHeaderCellDef>Artikel</th>
                 <td mat-cell *matCellDef="let element">{{ element.articleNumber }}</td>
             </ng-container>
-            <ng-container matColumnDef="vertriebswunsch">
+            <ng-container matColumnDef="periodN">
                 <th mat-header-cell *matHeaderCellDef>Diese Periode</th>
-                <td mat-cell *matCellDef="let element">{{ element.vertriebswunsch }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.periodN }}</td>
             </ng-container>
-            <ng-container matColumnDef="warteschlange">
+            <ng-container matColumnDef="periodNplusOne">
                 <th mat-header-cell *matHeaderCellDef>Periode+1</th>
-                <td mat-cell *matCellDef="let element">{{ element.warteschlange }}</td>
+                <td mat-cell *matCellDef="let element"><input matInput type="number" [(ngModel)] = "element.periodNplusOne" min="0" oninput="validity.valid||(value='0');"> </td>
             </ng-container>
-            <ng-container matColumnDef="geplanterSicherheitsbestand">
+            <ng-container matColumnDef="periodNplusTwo">
                 <th mat-header-cell *matHeaderCellDef>Periode+2</th>
-                <td mat-cell *matCellDef="let element">{{ element.geplanterSicherheitsbestand }}</td>
+                <td mat-cell *matCellDef="let element"><input matInput type="number" [(ngModel)] = "element.periodNplusTwo" min="0" oninput="validity.valid||(value='0');"> </td>
             </ng-container>
-            <ng-container matColumnDef="lagerbestandEndeVorperiode">
+            <ng-container matColumnDef="periodNplusThree">
                 <th mat-header-cell *matHeaderCellDef>Periode+3</th>
-                <td mat-cell *matCellDef="let element">{{ element.lagerbestandEndeVorperiode }}</td>
-            </ng-container>
+                <td mat-cell *matCellDef="let element"><input matInput type="number" [(ngModel)] = "element.periodNplusThree" min="0" oninput="validity.valid||(value='0');"> </td>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
     </mat-tab>
     <mat-tab label="Prognose">
-        <table mat-table [dataSource]="dispositionEigenfertigungArticlesP2">
+        <table mat-table [dataSource]="ProdprogArticleResult">
             <ng-container matColumnDef="articleNumber">
                 <th mat-header-cell *matHeaderCellDef>Artikel</th>
                 <td mat-cell *matCellDef="let element">{{ element.articleNumber }}</td>
             </ng-container>
-            <ng-container matColumnDef="vertriebswunsch">
+            <ng-container matColumnDef="periodN">
                 <th mat-header-cell *matHeaderCellDef>Diese Periode</th>
-                <td mat-cell *matCellDef="let element">{{ element.vertriebswunsch }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.periodN }}</td>
             </ng-container>
-            <ng-container matColumnDef="warteschlange">
+            <ng-container matColumnDef="periodNplusOne">
                 <th mat-header-cell *matHeaderCellDef>Periode+1</th>
-                <td mat-cell *matCellDef="let element">{{ element.warteschlange }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.periodNplusOne }}</td>
             </ng-container>
-            <ng-container matColumnDef="geplanterSicherheitsbestand">
+            <ng-container matColumnDef="periodNplusTwo">
                 <th mat-header-cell *matHeaderCellDef>Periode+2</th>
-                <td mat-cell *matCellDef="let element">{{ element.geplanterSicherheitsbestand }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.periodNplusTwo }}</td>
             </ng-container>
-            <ng-container matColumnDef="lagerbestandEndeVorperiode">
+            <ng-container matColumnDef="periodNplusThree">
                 <th mat-header-cell *matHeaderCellDef>Periode+3</th>
-                <td mat-cell *matCellDef="let element">{{ element.lagerbestandEndeVorperiode }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.periodNplusThree }}</td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
