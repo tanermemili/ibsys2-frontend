@@ -11,6 +11,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +26,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { DispositionEigenfertigungComponent } from './planning/disposition-eigenfertigung/disposition-eigenfertigung.component';
 import { ForecastComponent } from './planning/forecast/forecast.component';
 import { PlanningComponent } from './planning/planning.component';
+import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
 import { PurchasePartDispositionComponent } from './planning/purchase-part-disposition/purchase-part-disposition.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
@@ -65,6 +67,8 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
+MatTabsModule,
+    ProdprogComponent
 
   ],
   providers: [],

@@ -6,11 +6,13 @@ import { ExportXmlComponent } from './export-xml/export-xml.component';
 import { FutureInwardStockMovementsComponent } from './future-inward-stock-movements/future-inward-stock-movements.component';
 import { ImportXmlComponent } from './import-xml/import-xml.component';
 import { LoginComponent } from './login/login.component';
+import { DispositionEigenfertigungComponent } from './planning/disposition-eigenfertigung/disposition-eigenfertigung.component';
 import { PlanningComponent } from './planning/planning.component';
+import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
+import { PurchasePartDispositionComponent } from './planning/purchase-part-disposition/purchase-part-disposition.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
 import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.component';
-import { DispositionEigenfertigungComponent } from './planning/disposition-eigenfertigung/disposition-eigenfertigung.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'warehouse_stock', component: WarehouseStockComponent},
   { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent},
+  { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent},
+  { path: 'prodprog', component: ProdprogComponent},
   { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent}
 ]
 @NgModule({
