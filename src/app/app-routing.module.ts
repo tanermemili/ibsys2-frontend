@@ -13,6 +13,7 @@ import { FutureInwardStockMovementsComponent } from './future-inward-stock-movem
 import { PurchasePartDispositionComponent } from './purchase-part-disposition/purchase-part-disposition.component';
 import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
 import { DispositionEigenfertigungComponent } from './planning/disposition-eigenfertigung/disposition-eigenfertigung.component';
+import {CapacityPlanningComponent} from "./planning/capacity-planning/capacity-planning.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -27,7 +28,9 @@ const routes: Routes = [
   { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent},
   { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent},
   { path: 'prodprog', component: ProdprogComponent},
-  { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent}
+  { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent},
+  { path: 'capacity-planning', component: CapacityPlanningComponent}
+
 ];
 
 @NgModule({

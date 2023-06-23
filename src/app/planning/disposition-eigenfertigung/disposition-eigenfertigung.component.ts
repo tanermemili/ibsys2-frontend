@@ -20,13 +20,13 @@ import { MatButtonModule } from "@angular/material/button";
     standalone: true,
     providers: [DispositionEigenfertigungService],
     imports: [
-        CommonModule, 
-        HttpClientModule, 
-        MatCardModule, 
-        MatTableModule, 
-        MatTabsModule, 
-        MatInputModule, 
-        MatFormFieldModule, 
+        CommonModule,
+        HttpClientModule,
+        MatCardModule,
+        MatTableModule,
+        MatTabsModule,
+        MatInputModule,
+        MatFormFieldModule,
         FormsModule,
         MatDialogModule,
         MatButtonModule
@@ -103,14 +103,14 @@ export class DispositionEigenfertigungComponent implements OnInit {
             }
             if(this.geplanterSicherheitsbestand.has(element.articleNumber)) {
                 let currentGelanterSicherheitsbestand: number = this.geplanterSicherheitsbestand.get(element.articleNumber)!
-                this.geplanterSicherheitsbestand.set(element.articleNumber, element.geplanterSicherheitsbestand + currentGelanterSicherheitsbestand)    
+                this.geplanterSicherheitsbestand.set(element.articleNumber, element.geplanterSicherheitsbestand + currentGelanterSicherheitsbestand)
             } else {
                 this.geplanterSicherheitsbestand.set(element.articleNumber, element.geplanterSicherheitsbestand)
             }
 
             if(this.zusaetzlicheProduktionauftraege.has(element.articleNumber)) {
                 let currentZusaetzlicheProduktionsauftraege: number = this.zusaetzlicheProduktionauftraege.get(element.articleNumber)!
-                this.zusaetzlicheProduktionauftraege.set(element.articleNumber, element.zusaetzlicheProduktionsauftraege + currentZusaetzlicheProduktionsauftraege)    
+                this.zusaetzlicheProduktionauftraege.set(element.articleNumber, element.zusaetzlicheProduktionsauftraege + currentZusaetzlicheProduktionsauftraege)
             } else {
                 this.zusaetzlicheProduktionauftraege.set(element.articleNumber, element.zusaetzlicheProduktionsauftraege);
             }
@@ -134,7 +134,7 @@ export class DispositionEigenfertigungComponent implements OnInit {
         let geplanterSicherheitsbestand = Object.fromEntries(this.geplanterSicherheitsbestand);
         let zuesaetzlicheProduktionsauftraege = Object.fromEntries(this.zusaetzlicheProduktionauftraege)
 
-        let dispositionEigenfertigungArticleResult: DispositionEigenfertigungArticleInput = new DispositionEigenfertigungArticleInput(geplanterSicherheitsbestand, zuesaetzlicheProduktionsauftraege);  
+        let dispositionEigenfertigungArticleResult: DispositionEigenfertigungArticleInput = new DispositionEigenfertigungArticleInput(geplanterSicherheitsbestand, zuesaetzlicheProduktionsauftraege);
         console.log(dispositionEigenfertigungArticleResult)
 
         this.dispositionEigenfertigungService.plan(dispositionEigenfertigungArticleResult).subscribe(result => this.search());

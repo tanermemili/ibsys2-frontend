@@ -31,6 +31,7 @@ import { DispositionEigenfertigungComponent } from './planning/disposition-eigen
 import { ForecastComponent } from './planning/forecast/forecast.component';
 import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { CapacityPlanningComponent } from './planning/capacity-planning/capacity-planning.component';
 
 
 @NgModule({
@@ -67,9 +68,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-MatTabsModule,
-    ProdprogComponent
-
+    MatTabsModule,
+    ProdprogComponent,
+    CapacityPlanningComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
