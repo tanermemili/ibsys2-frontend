@@ -31,6 +31,7 @@ import { DispositionEigenfertigungComponent } from './planning/disposition-eigen
 import { ForecastComponent } from './planning/forecast/forecast.component';
 import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { PlanendComponent } from './planning/planend/planend.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     PurchasePartDispositionComponent,
     MessagesComponent,
     ForecastComponent,
+    PlanendComponent,
   ],
   imports: [
     DispositionEigenfertigungComponent,
@@ -67,7 +69,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-MatTabsModule,
+    MatTabsModule,
     ProdprogComponent
 
   ],
