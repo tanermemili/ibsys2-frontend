@@ -3,26 +3,23 @@
         <tr>
             <th>Artikel</th>
             <th>Anfangsbestand</th>
-            <th colspan="2">Ausstehende Bestellungen in</th>
             <th colspan="3">Verwendung in Periode</th>
+            <th>Lieferfrist Eilbestellung</th>
             <th>Lieferfrist inkl. Abweichung</th>
             <th colspan="4">Bruttobedarf in Periode</th>
             <th>Diskontmenge</th>
             <th colspan="2">Bestellmenge und Bestellart</th>
             <th>Status</th>
-            <th>Material ausreichend bis</th>
         </tr>
         <tr>
-            <th></th>
-            <th></th>
-            <!-- Ausstehende Bestellungen in -->
             <th></th>
             <th></th>
             <!-- Verwendung in Periode -->
             <th>1</th>
             <th>2</th>
             <th>3</th>
-            <!-- Lieferfrist und Abweichung -->
+            <!-- Lieferfrist Eilbestellung und Abweichung -->
+            <th></th>
             <th></th>
             <!-- Bruttobedarf in Periode -->
             <th>1</th>
@@ -35,8 +32,6 @@
             <th></th>
             <!-- Status -->
             <th></th>
-            <!-- Material ausreichend bis -->
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -45,14 +40,12 @@
             <td>{{ purchasePart.itemNumber }}</td>
             <!-- Anfangsbestand -->
             <td>{{ purchasePart.initialStock }}</td>
-            <!-- Ausstehende Bestellungen in -->
-            <td>{{ purchasePart.orderQuantity }}</td>
-            <td>???</td>
             <!-- Verwendung in Periode -->
             <td>???</td>
             <td>???</td>
             <td>???</td>
-            <!-- Lieferfrist und Abweichung -->
+            <!-- Lieferfrist Eilbestellung und Abweichung -->
+            <td>{{ purchasePart.deliveryTimeFast }}</td>
             <td>{{ purchasePart.deliveryTimeWithDeviation }}</td>
             <!-- Bruttobedarf in Periode -->
             <td>{{ purchasePart.requirementN }}</td>
@@ -69,8 +62,6 @@
                 <!-- <mat-icon class="green_circle">circle</mat-icon> -->
                 <mat-icon [ngClass]="colorCircle(purchasePart.orderColor)">circle</mat-icon>
             </td>
-            <!-- Material ausreichend bis -->
-            <td>???</td>
         </tr>
     </tbody>
 </table>

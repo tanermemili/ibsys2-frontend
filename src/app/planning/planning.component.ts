@@ -68,4 +68,8 @@ export class PlanningComponent {
       }
     }
   } 
+
+  clickNextPurchasePartDisposition(_: any) {
+    this.purchasePartDispositionComponent.savePurchaseParts();
+  }
 }
