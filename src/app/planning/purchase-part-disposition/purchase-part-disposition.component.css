@@ -1,0 +1,16 @@
+.green_circle {
+    color: #096a00;
+}
+.yellow_circle {
+    color: #eddd2f;
+}
+.red_circle {
+    color: #e00202;
+}
+.black_circle {
+    color: #000000;
+}
+
+.purchasePartDispositionTable td {
+    text-align: center;
+}
