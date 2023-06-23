@@ -50,7 +50,7 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
   imports: [
     DispositionEigenfertigungComponent,
     BrowserModule,
-    // AppRoutingModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatButtonModule,
