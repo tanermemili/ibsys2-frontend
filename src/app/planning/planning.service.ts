@@ -27,12 +27,24 @@ export interface PurchasePartDataType {
   "orderQuantity": number;
   "orderType": number;
   "orderColor": string;
+  "p1"?: number;
+  "p2"?: number;
+  "p3"?: number;
+
 }
 
 export interface PurchasePartOutputDataType {
   "article": number;
   "quantity": number;
   "modus": number;
+}
+
+export interface QuantityNeedDataType {
+  "id": number;
+  "itemNumber": number;
+  "p1": number;
+  "p2": number;
+  "p3": number;
 }
 
 @Injectable({
@@ -44,6 +56,7 @@ export class PlanningService {
   private forecastPostUrl: string = '/api/productionplan/forecast/new';
   private purchasePartDispostionGetUrl: string = '/api/purchasepartdisposition';
   private purchasePartDispostionPostUrl: string = '/api/purchasepartdisposition/output';
+  private quantityNeedUrl: string = '/api/purchasepartdisposition/quantityneed';
   private httpOptions = {
     headers: new HttpHeaders({
       'responseType': 'text',
@@ -71,6 +84,10 @@ export class PlanningService {
 
   savePurchaseParts(input: any): Observable<Object> {
     return this.http.post<Object>(this.purchasePartDispostionPostUrl, input, this.httpOptions);
+  }
+
+  getQuantityNeed(): Observable<Object> {
+    return this.http.get<QuantityNeedDataType[]>(this.quantityNeedUrl);
   }
 
 }

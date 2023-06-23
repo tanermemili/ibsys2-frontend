@@ -35,32 +35,31 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let purchasePart of purchaseParts">
+        <tr *ngFor="let purchasePartQuantityNeed of mergedPurchasePartsQuantityNeed">
             <!-- Artikel -->
-            <td>{{ purchasePart.itemNumber }}</td>
+            <td>{{ purchasePartQuantityNeed.itemNumber }}</td>
             <!-- Anfangsbestand -->
-            <td>{{ purchasePart.initialStock }}</td>
+            <td>{{ purchasePartQuantityNeed.initialStock }}</td>
             <!-- Verwendung in Periode -->
-            <td>???</td>
-            <td>???</td>
-            <td>???</td>
+            <td>{{ purchasePartQuantityNeed.p1 }}</td>
+            <td>{{ purchasePartQuantityNeed.p2 }}</td>
+            <td>{{ purchasePartQuantityNeed.p3 }}</td>
             <!-- Lieferfrist Eilbestellung und Abweichung -->
-            <td>{{ purchasePart.deliveryTimeFast }}</td>
-            <td>{{ purchasePart.deliveryTimeWithDeviation }}</td>
+            <td>{{ purchasePartQuantityNeed.deliveryTimeFast }}</td>
+            <td>{{ purchasePartQuantityNeed.deliveryTimeWithDeviation }}</td>
             <!-- Bruttobedarf in Periode -->
-            <td>{{ purchasePart.requirementN }}</td>
-            <td>{{ purchasePart.requirementNplusOne }}</td>
-            <td>{{ purchasePart.requirementNplusTwo }}</td>
-            <td>{{ purchasePart.requirementNplusThree }}</td>
+            <td>{{ purchasePartQuantityNeed.requirementN }}</td>
+            <td>{{ purchasePartQuantityNeed.requirementNplusOne }}</td>
+            <td>{{ purchasePartQuantityNeed.requirementNplusTwo }}</td>
+            <td>{{ purchasePartQuantityNeed.requirementNplusThree }}</td>
             <!-- Diskontmenge -->
-            <td>{{ purchasePart.discountQuantity }}</td>
+            <td>{{ purchasePartQuantityNeed.discountQuantity }}</td>
             <!-- Bestellmenge und Bestellart -->
-            <td><input [(ngModel)]="purchasePart.orderQuantity" type="number" /></td>
-            <td><input [(ngModel)]="purchasePart.orderType" type="number" /></td>
+            <td><input [(ngModel)]="purchasePartQuantityNeed.orderQuantity" type="number" /></td>
+            <td><input [(ngModel)]="purchasePartQuantityNeed.orderType" type="number" /></td>
             <!-- Status -->
             <td>
-                <!-- <mat-icon class="green_circle">circle</mat-icon> -->
-                <mat-icon [ngClass]="colorCircle(purchasePart.orderColor)">circle</mat-icon>
+                <mat-icon [ngClass]="colorCircle(purchasePartQuantityNeed.orderColor)">circle</mat-icon>
             </td>
         </tr>
     </tbody>

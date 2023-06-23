@@ -59,7 +59,7 @@ export class PlanningComponent {
       case 4: {
         // Kaufteildisposition Teil 2
         log.debug('Kaufteildisposition Teil 2 selected');
-        this.purchasePartDispositionComponent.getPurchaseParts();
+        this.purchasePartDispositionComponent.getPurchasePartsAndQuantityNeed();
         break;
       }
       default: {

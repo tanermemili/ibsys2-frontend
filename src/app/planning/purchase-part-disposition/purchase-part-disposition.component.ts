@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import log from 'loglevel';
-import { PlanningService, PurchasePartDataType, PurchasePartOutputDataType } from '../planning.service';
+import { PlanningService, PurchasePartDataType, PurchasePartOutputDataType, QuantityNeedDataType } from '../planning.service';
 
 @Component({
   selector: 'app-purchase-part-disposition',
@@ -10,10 +10,12 @@ import { PlanningService, PurchasePartDataType, PurchasePartOutputDataType } fro
 export class PurchasePartDispositionComponent {
   purchaseParts: PurchasePartDataType[] = [];
   purchasePartsOutput: PurchasePartOutputDataType[] = [];
+  quantityNeed: QuantityNeedDataType[] = [];
+  mergedPurchasePartsQuantityNeed: PurchasePartDataType[] = [];
   constructor(private planningService: PlanningService) {}
 
   ngOnInit() {
-    this.getPurchaseParts();
+    this.getPurchasePartsAndQuantityNeed();
   }
 
   colorCircle(color: string): string {
@@ -29,20 +31,37 @@ export class PurchasePartDispositionComponent {
     }
   }
 
-  public getPurchaseParts() {
+  public getPurchasePartsAndQuantityNeed() {
     this.planningService.getPurchaseParts().subscribe({
-      next: (data) => {
-        this.purchaseParts = data as PurchasePartDataType[];
+      next: (purchasePartsData) => {
+        this.purchaseParts = purchasePartsData as PurchasePartDataType[];
+        this.planningService.getQuantityNeed().subscribe({
+          next: (quantityNeedData) => {
+            this.quantityNeed = quantityNeedData as QuantityNeedDataType[];
+            this.mergePurchasePartsAndQuantityNeed();
+          }
+        })
         this.purchaseParts.sort((a, b) => a.itemNumber - b.itemNumber);
         log.debug('/api/purchasepartdisposition:', this.purchaseParts);
       },
-      error: (e) => log.debug('/api/purchasepartdisposition Error'),
+      error: (e) => log.debug('/api/purchasepartdisposition Error', e),
       complete: () => log.debug('/api/purchasepartdisposition completed')
     });
   }
 
+  private mergePurchasePartsAndQuantityNeed() {
+    this.mergedPurchasePartsQuantityNeed = [];
+    this.purchaseParts.forEach((item, i) => {
+      this.mergedPurchasePartsQuantityNeed.push({
+        ...item,
+        ...(this.quantityNeed.find((val) => val.itemNumber === item.itemNumber))
+      });
+    });
+    log.debug('Merged JSON:', this.mergedPurchasePartsQuantityNeed);
+  }
+
   public savePurchaseParts() {
-    this.buildJson();
+    this.buildJsonOutput();
     this.planningService.savePurchaseParts(this.purchasePartsOutput).subscribe({
       error: (e) => log.debug(e),
       complete: () => {
@@ -51,7 +70,7 @@ export class PurchasePartDispositionComponent {
     });
   }
 
-  private buildJson() {
+  private buildJsonOutput() {
     this.purchasePartsOutput = [];
     this.purchaseParts.forEach((purchasePart: any, index: any) => {
       if (purchasePart.orderType != null ) {
