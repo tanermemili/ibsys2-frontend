@@ -1,0 +1,128 @@
+<mat-tab-group>
+    <mat-tab label="P1">
+        <table mat-table [dataSource]="dispositionEigenfertigungArticlesP1">
+            <ng-container matColumnDef="articleNumber">
+                <th mat-header-cell *matHeaderCellDef>Article</th>
+                <td mat-cell *matCellDef="let element">{{ element.articleNumber }}</td>
+            </ng-container>
+            <ng-container matColumnDef="vertriebswunsch">
+                <th mat-header-cell *matHeaderCellDef>Vertriebswunsch</th>
+                <td mat-cell *matCellDef="let element">{{ element.vertriebswunsch }}</td>
+            </ng-container>
+            <ng-container matColumnDef="warteschlange">
+                <th mat-header-cell *matHeaderCellDef>Warteschlange</th>
+                <td mat-cell *matCellDef="let element">{{ element.warteschlange }}</td>
+            </ng-container>
+            <ng-container matColumnDef="geplanterSicherheitsbestand">
+                <th mat-header-cell *matHeaderCellDef>Geplanter Sicherheitsbestand</th>
+                <td mat-cell *matCellDef="let element">{{ element.geplanterSicherheitsbestand }}</td>
+            </ng-container>
+            <ng-container matColumnDef="lagerbestandEndeVorperiode">
+                <th mat-header-cell *matHeaderCellDef>Lagerbestand Ende Vorperiode</th>
+                <td mat-cell *matCellDef="let element">{{ element.lagerbestandEndeVorperiode }}</td>
+            </ng-container>
+            <ng-container matColumnDef="auftraegeInWarteschlange">
+                <th mat-header-cell *matHeaderCellDef>Auftraege in Warteschlange</th>
+                <td mat-cell *matCellDef="let element">{{ element.auftraegeInWarteschlange }}</td>
+            </ng-container>
+            <ng-container matColumnDef="auftraegeInBearbeitung">
+                <th mat-header-cell *matHeaderCellDef>Auftraege in Bearbeitung</th>
+                <td mat-cell *matCellDef="let element">{{ element.auftraegeInBearbeitung }}</td>
+            </ng-container>
+            <ng-container matColumnDef="zusaetzlicheProduktionsauftraege">
+                <th mat-header-cell *matHeaderCellDef>Zusatzauftraege</th>
+                <td mat-cell *matCellDef="let element">{{ element.zusaetzlicheProduktionsauftraege }}</td>
+            </ng-container>
+            <ng-container matColumnDef="produktionFuerKommendePeriode">
+                <th mat-header-cell *matHeaderCellDef>Produktionsauftraege</th>
+                <td mat-cell *matCellDef="let element">{{ element.produktionFuerKommendePeriode }}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    </mat-tab>
+    <mat-tab label="P2">
+        <table mat-table [dataSource]="dispositionEigenfertigungArticlesP2">
+            <ng-container matColumnDef="articleNumber">
+                <th mat-header-cell *matHeaderCellDef>Article</th>
+                <td mat-cell *matCellDef="let element">{{ element.articleNumber }}</td>
+            </ng-container>
+            <ng-container matColumnDef="vertriebswunsch">
+                <th mat-header-cell *matHeaderCellDef>Vertriebswunsch</th>
+                <td mat-cell *matCellDef="let element">{{ element.vertriebswunsch }}</td>
+            </ng-container>
+            <ng-container matColumnDef="warteschlange">
+                <th mat-header-cell *matHeaderCellDef>Warteschlange</th>
+                <td mat-cell *matCellDef="let element">{{ element.warteschlange }}</td>
+            </ng-container>
+            <ng-container matColumnDef="geplanterSicherheitsbestand">
+                <th mat-header-cell *matHeaderCellDef>Geplanter Sicherheitsbestand</th>
+                <td mat-cell *matCellDef="let element">{{ element.geplanterSicherheitsbestand }}</td>
+            </ng-container>
+            <ng-container matColumnDef="lagerbestandEndeVorperiode">
+                <th mat-header-cell *matHeaderCellDef>Lagerbestand Ende Vorperiode</th>
+                <td mat-cell *matCellDef="let element">{{ element.lagerbestandEndeVorperiode }}</td>
+            </ng-container>
+            <ng-container matColumnDef="auftraegeInWarteschlange">
+                <th mat-header-cell *matHeaderCellDef>Auftraege in Warteschlange</th>
+                <td mat-cell *matCellDef="let element">{{ element.auftraegeInWarteschlange }}</td>
+            </ng-container>
+            <ng-container matColumnDef="auftraegeInBearbeitung">
+                <th mat-header-cell *matHeaderCellDef>Auftraege in Bearbeitung</th>
+                <td mat-cell *matCellDef="let element">{{ element.auftraegeInBearbeitung }}</td>
+            </ng-container>
+            <ng-container matColumnDef="zusaetzlicheProduktionsauftraege">
+                <th mat-header-cell *matHeaderCellDef>Zusatzauftraege</th>
+                <td mat-cell *matCellDef="let element">{{ element.zusaetzlicheProduktionsauftraege }}</td>
+            </ng-container>
+            <ng-container matColumnDef="produktionFuerKommendePeriode">
+                <th mat-header-cell *matHeaderCellDef>Produktionsauftraege</th>
+                <td mat-cell *matCellDef="let element">{{ element.produktionFuerKommendePeriode }}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    </mat-tab>
+    <mat-tab label="P3">
+        <table mat-table [dataSource]="dispositionEigenfertigungArticlesP">
+            <ng-container matColumnDef="articleNumber">
+                <th mat-header-cell *matHeaderCellDef>Article</th>
+                <td mat-cell *matCellDef="let element">{{ element.articleNumber }}</td>
+            </ng-container>
+            <ng-container matColumnDef="vertriebswunsch">
+                <th mat-header-cell *matHeaderCellDef>Vertriebswunsch</th>
+                <td mat-cell *matCellDef="let element">{{ element.vertriebswunsch }}</td>
+            </ng-container>
+            <ng-container matColumnDef="warteschlange">
+                <th mat-header-cell *matHeaderCellDef>Warteschlange</th>
+                <td mat-cell *matCellDef="let element">{{ element.warteschlange }}</td>
+            </ng-container>
+            <ng-container matColumnDef="geplanterSicherheitsbestand">
+                <th mat-header-cell *matHeaderCellDef>Geplanter Sicherheitsbestand</th>
+                <td mat-cell *matCellDef="let element">{{ element.geplanterSicherheitsbestand }}</td>
+            </ng-container>
+            <ng-container matColumnDef="lagerbestandEndeVorperiode">
+                <th mat-header-cell *matHeaderCellDef>Lagerbestand Ende Vorperiode</th>
+                <td mat-cell *matCellDef="let element">{{ element.lagerbestandEndeVorperiode }}</td>
+            </ng-container>
+            <ng-container matColumnDef="auftraegeInWarteschlange">
+                <th mat-header-cell *matHeaderCellDef>Auftraege in Warteschlange</th>
+                <td mat-cell *matCellDef="let element">{{ element.auftraegeInWarteschlange }}</td>
+            </ng-container>
+            <ng-container matColumnDef="auftraegeInBearbeitung">
+                <th mat-header-cell *matHeaderCellDef>Auftraege in Bearbeitung</th>
+                <td mat-cell *matCellDef="let element">{{ element.auftraegeInBearbeitung }}</td>
+            </ng-container>
+            <ng-container matColumnDef="zusaetzlicheProduktionsauftraege">
+                <th mat-header-cell *matHeaderCellDef>Zusatzauftraege</th>
+                <td mat-cell *matCellDef="let element">{{ element.zusaetzlicheProduktionsauftraege }}</td>
+            </ng-container>
+            <ng-container matColumnDef="produktionFuerKommendePeriode">
+                <th mat-header-cell *matHeaderCellDef>Produktionsauftraege</th>
+                <td mat-cell *matCellDef="let element">{{ element.produktionFuerKommendePeriode }}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    </mat-tab>
+</mat-tab-group>
