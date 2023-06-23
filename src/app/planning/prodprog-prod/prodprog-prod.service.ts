@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, first, throwError } from "rxjs";
 import {ProductionEntity, ProductionEntityPost} from "./prodprog-prod.model";
-import {DispositionEigenfertigungArticleInput} from "../disposition-eigenfertigung/disposition-eigenfertigung.model";
 
 @Injectable({
   providedIn: 'root'
