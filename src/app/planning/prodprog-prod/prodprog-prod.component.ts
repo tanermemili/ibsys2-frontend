@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ProdprogProdService } from "./prodprog-prod.service";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
-import {ProductionEntity, ProductionEntityPost} from "./prodprog-prod.model";
+import {ProductionEntity, ProductionEntityPost, PredictionEntity} from "./prodprog-prod.model";
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { first, tap } from 'rxjs';
@@ -22,6 +22,7 @@ export class ProdprogComponent implements OnInit {
 
   entity: ProductionEntity[] = [];
   postEntity: ProductionEntityPost[] = [];
+  predEntity: PredictionEntity[] = [];
 
   displayedColumns = [
       'articleNumber',
@@ -35,6 +36,7 @@ export class ProdprogComponent implements OnInit {
 
   ngOnInit(): void {
       this.search();
+      this.search2();
   }
 
   search() {
@@ -47,6 +49,17 @@ export class ProdprogComponent implements OnInit {
           )
           .subscribe()
   }
+
+  search2() {
+    this.ProdprogProdService.findAllCurrentPreds()
+        .pipe(
+            first(),
+            tap(result => {
+                this.predEntity = result;
+            })
+        )
+        .subscribe()
+}
 
   create(): void {
 

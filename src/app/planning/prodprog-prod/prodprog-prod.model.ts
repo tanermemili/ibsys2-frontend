@@ -20,3 +20,11 @@ export class ProductionEntityPost {
     }
 
 }
+
+export interface PredictionEntity {
+    article: number,
+    periodN: number,
+    periodNplusOne: number,
+    periodNplusTwo: number,
+    periodNplusThree: number,
+}

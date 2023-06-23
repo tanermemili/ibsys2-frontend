@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, first, throwError } from "rxjs";
-import {ProductionEntity, ProductionEntityPost} from "./prodprog-prod.model";
+import {ProductionEntity, ProductionEntityPost, PredictionEntity} from "./prodprog-prod.model";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ import {ProductionEntity, ProductionEntityPost} from "./prodprog-prod.model";
 export class ProdprogProdService {
   readonly #baseUrl = "http://localhost:8080/api/productionplan/production/all"
   readonly #baseUrl2: string = "http://localhost:8080/api/productionplan/production/new"
+  readonly #baseUrl3: string = "http://localhost:8080/api/productionplan/forecast"
 
   constructor(private readonly httpClient: HttpClient) {
       console.log('Prodprog.start')
@@ -24,6 +25,17 @@ export class ProdprogProdService {
           )
       )
   }
+
+  findAllCurrentPreds(): Observable<PredictionEntity[]> {
+    return (
+        this.httpClient
+        .get<PredictionEntity[]>(this.#baseUrl3)
+        .pipe(
+            catchError(this.handleError),
+            first()
+        )
+    )
+}
 
   post(input: ProductionEntityPost[]) {
     return (
