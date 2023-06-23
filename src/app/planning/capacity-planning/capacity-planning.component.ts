@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CapacityPlanningService} from "./capacity-planning.service";
-import {CapacityPlanningArticle, CapacityPlanningProduction} from "./capacity-planning.model";
+import {CapacityPlanningArticle, CapacityPlanningOverview, CapacityPlanningProduction} from "./capacity-planning.model";
 import {first, map, tap} from "rxjs";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
@@ -20,6 +20,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 export class CapacityPlanningComponent implements OnInit {
 
   articles: CapacityPlanningArticle[] = []
+  overviewResults: CapacityPlanningOverview[] = []
 
   displayedColumns = [
     'articleNumber',
@@ -41,6 +42,10 @@ export class CapacityPlanningComponent implements OnInit {
     '15',
   ]
 
+  displayedColumns2 = [
+    'description',
+  ]
+
   constructor(private readonly capacityPlanningService: CapacityPlanningService) {}
 
   ngOnInit(): void {
@@ -51,8 +56,9 @@ export class CapacityPlanningComponent implements OnInit {
      this.capacityPlanningService.findProductions().pipe(
        first(),
        tap(result => {
-         var productions: CapacityPlanningProduction[] = result;
-         var articles: CapacityPlanningArticle[] = []
+         let productions: CapacityPlanningProduction[] = result;
+         let articles: CapacityPlanningArticle[] = []
+         let overviewResult: CapacityPlanningOverview[] = []
          productions.forEach(
            production => {
              articles.push(new CapacityPlanningArticle(production.article, production.quantity))
@@ -68,8 +74,11 @@ export class CapacityPlanningComponent implements OnInit {
                }
              })
            })
+           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
          })
+         this.overviewResults = overviewResult;
          console.log(this.articles)
+         console.log(this.overviewResults)
        })
      )
        .subscribe()

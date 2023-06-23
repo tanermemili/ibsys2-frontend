@@ -1,11 +1,6 @@
 export interface CapacityPlanningProduction {
   article: number,
   quantity: number
-
-}
-
-export interface CapacityPlanningResult {
-  workingTimePlan: WorkingTimePlan[],
 }
 
 export interface WorkingTimePlan {
@@ -26,14 +21,18 @@ export interface Workingtime {
   overtime: number,
 }
 
-export interface CapacityPlanningResult {
-
+export interface CapacityPlanningResultObject {
   newCapacity_reqs: Map<number, number>,
   newSetUpTime: Map<number, number>
   behindScheduleCapacity: Map<number, number>
   behindScheduleSetUpTime: Map<number, number>
   totalCapacityRequirement: Map<number, number>
   workstationsWithOverTime: Item[]
+}
+
+export interface CapacityPlanningResult {
+  workingTimePlan: WorkingTimePlan[],
+  capacityPlanningResult: CapacityPlanningResultObject,
 }
 
 export class CapacityPlanningInput {
@@ -74,5 +73,16 @@ export class CapacityPlanningArticle {
     this.workstations.set(15, 0)
   }
 
+
+}
+
+export class CapacityPlanningOverview {
+  description: string
+  workstations: Map<number, number>
+
+  constructor(description: string, workstations: Map<number, number>) {
+    this.description = description;
+    this.workstations = workstations;
+  }
 
 }

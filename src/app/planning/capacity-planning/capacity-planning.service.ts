@@ -30,31 +30,4 @@ export class CapacityPlanningService {
     return(this.httpClient.post<CapacityPlanningResult>(this.#postUrl, articles, {}))
   }
 
-  get(): CapacityPlanningArticle[] {
-
-    let productions: CapacityPlanningProduction[] = []
-    let articles: CapacityPlanningArticle[] = []
-
-    this.findProductions().subscribe(result => {
-      productions.forEach(
-        production => {
-          articles.push(new CapacityPlanningArticle(production.article, production.quantity))
-        }
-      )
-      this.postArticles(articles).subscribe(result => {
-        console.log(result)
-        result.workingTimePlan.forEach(element => {
-          articles.forEach(article => {
-            if(article.article == element.articleNumber) {
-              article.workstations.set(element.workstationNumber, element.workingTime)
-            }
-          })
-        })
-      })
-      console.log(articles)
-    })
-
-    return articles;
-  }
-
 }
