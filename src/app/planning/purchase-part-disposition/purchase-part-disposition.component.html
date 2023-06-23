@@ -1,0 +1,66 @@
+<table class="purchasePartDispositionTable">
+    <thead>
+        <tr>
+            <th>Artikel</th>
+            <th>Anfangsbestand</th>
+            <th colspan="3">Verwendung in Periode</th>
+            <th>Lieferfrist Eilbestellung</th>
+            <th>Lieferfrist inkl. Abweichung</th>
+            <th colspan="4">Bruttobedarf in Periode</th>
+            <th>Diskontmenge</th>
+            <th colspan="2">Bestellmenge und Bestellart</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <!-- Verwendung in Periode -->
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <!-- Lieferfrist Eilbestellung und Abweichung -->
+            <th></th>
+            <th></th>
+            <!-- Bruttobedarf in Periode -->
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th></th>
+            <!-- Bestellmenge und Bestellart -->
+            <th></th>
+            <th></th>
+            <!-- Status -->
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let purchasePartQuantityNeed of mergedPurchasePartsQuantityNeed">
+            <!-- Artikel -->
+            <td>{{ purchasePartQuantityNeed.itemNumber }}</td>
+            <!-- Anfangsbestand -->
+            <td>{{ purchasePartQuantityNeed.initialStock }}</td>
+            <!-- Verwendung in Periode -->
+            <td>{{ purchasePartQuantityNeed.p1 }}</td>
+            <td>{{ purchasePartQuantityNeed.p2 }}</td>
+            <td>{{ purchasePartQuantityNeed.p3 }}</td>
+            <!-- Lieferfrist Eilbestellung und Abweichung -->
+            <td>{{ purchasePartQuantityNeed.deliveryTimeFast }}</td>
+            <td>{{ purchasePartQuantityNeed.deliveryTimeWithDeviation }}</td>
+            <!-- Bruttobedarf in Periode -->
+            <td>{{ purchasePartQuantityNeed.requirementN }}</td>
+            <td>{{ purchasePartQuantityNeed.requirementNplusOne }}</td>
+            <td>{{ purchasePartQuantityNeed.requirementNplusTwo }}</td>
+            <td>{{ purchasePartQuantityNeed.requirementNplusThree }}</td>
+            <!-- Diskontmenge -->
+            <td>{{ purchasePartQuantityNeed.discountQuantity }}</td>
+            <!-- Bestellmenge und Bestellart -->
+            <td><input [(ngModel)]="purchasePartQuantityNeed.orderQuantity" type="number" /></td>
+            <td><input [(ngModel)]="purchasePartQuantityNeed.orderType" type="number" /></td>
+            <!-- Status -->
+            <td>
+                <mat-icon [ngClass]="colorCircle(purchasePartQuantityNeed.orderColor)">circle</mat-icon>
+            </td>
+        </tr>
+    </tbody>
+</table>

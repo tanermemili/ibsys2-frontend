@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { XMLParser } from 'fast-xml-parser';
 import log from 'loglevel';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -64,7 +64,7 @@ export class InputService {
     this.setInput(inputJSON).subscribe(
       res => log.debug('/api/input response', res),
       err => log.debug('/api/input Error', err),
-      () => this.messageService.add('/api/input request completed.')
+      () => log.debug('/api/input request completed.')
     );
   }
 
