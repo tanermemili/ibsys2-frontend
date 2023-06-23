@@ -10,6 +10,7 @@ import { PlanningComponent } from './planning/planning.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
 import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.component';
+import { DispositionEigenfertigungComponent } from './planning/disposition-eigenfertigung/disposition-eigenfertigung.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'warehouse_stock', component: WarehouseStockComponent},
   { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent},
+  { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent}
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
