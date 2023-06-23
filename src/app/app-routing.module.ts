@@ -22,10 +22,5 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'warehouse_stock', component: WarehouseStockComponent},
   { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent},
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
 })
 export class AppRoutingModule { }

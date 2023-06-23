@@ -22,6 +22,7 @@ import { FutureInwardStockMovementsComponent } from './future-inward-stock-movem
 import { ImportXmlComponent } from './import-xml/import-xml.component';
 import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './messages/messages.component';
+import { DispositionEigenfertigungComponent } from './planning/disposition-eigenfertigung/disposition-eigenfertigung.component';
 import { ForecastComponent } from './planning/forecast/forecast.component';
 import { PlanningComponent } from './planning/planning.component';
 import { PurchasePartDispositionComponent } from './planning/purchase-part-disposition/purchase-part-disposition.component';
@@ -47,10 +48,11 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     ForecastComponent,
   ],
   imports: [
+    DispositionEigenfertigungComponent,
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     BrowserAnimationsModule,
-    MatFormFieldModule, 
+    MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
     MatIconModule,
@@ -63,7 +65,7 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
