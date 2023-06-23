@@ -1,0 +1,73 @@
+<h2>Planung</h2>
+<div class="example-input-wrapper">
+    <label for="duration">Animation duration:</label>
+    <input id="duration" value="2000" type="number" min="0" step="100" #duration>
+</div>
+<mat-stepper orientation="vertical" [animationDuration]="duration.value">
+    <mat-step>
+        <ng-template matStepLabel>Eingabetabelle</ng-template>
+        <p>Vertriebswunsch</p>
+        <table>
+            <tr>
+                <th>Artikel</th>
+                <th>Anzahl</th>
+            </tr>
+            <tr *ngFor="let item of (planendData$ | async)?.input?.sellwish">
+                <td>{{ item.item.article }}</td>
+                <td>{{ item.item.quantity }}</td>
+            </tr>
+        </table>
+
+        <p>Direktverkauf</p>
+        <table>
+            <tr>
+                <th>Diese Woche</th>
+                <th>Preis/Einheit</th>
+                <th>Strafe</th>
+            </tr>
+        </table>
+
+        <p>Kapazitätsbedarf</p>
+        <table>
+            <tr>
+                <th>Arbeitsplatz</th>
+                <th>Schicht</th>
+                <th>Überstunden</th>
+            </tr>
+            <tr *ngFor="let item of (planendData$ | async)?.input?.workingtimelist">
+                <td>{{ item.workingtime.station }}</td>
+                <td>{{ item.workingtime.shift }}</td>
+                <td>{{ item.workingtime.overtime }}</td>
+            </tr>
+        </table>
+
+        <p>Bestellungen</p>
+        <table>
+            <tr>
+                <th>Artikel</th>
+                <th>Anzahl</th>
+                <th>Liefermodus</th>
+            </tr>
+            <tr *ngFor="let item of (planendData$ | async)?.input?.orderlist">
+                <td>{{ item.order.article }}</td>
+                <td>{{ item.order.quantity }}</td>
+                <td>{{ item.order.modus }}</td>
+            </tr>
+        </table>
+
+        <p>Fertigungsaufträge</p>
+        <table>
+            <tr>
+                <th>Artikel</th>
+                <th>Anzahl</th>
+            </tr>
+        </table>
+
+        <button mat-raised-button color="accent" matStepperPrevious>zurück</button>
+        <button mat-raised-button color="accent" [routerLink]="['/export-xml']">
+            <mat-icon>checkmark</mat-icon>
+            speichern
+        </button>
+    </mat-step>
+
+</mat-stepper>
