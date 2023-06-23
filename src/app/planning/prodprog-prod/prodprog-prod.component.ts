@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ProdprogProdService } from "./prodprog-prod.service";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
-import { ProdprogArticleResult, ProdprogResult } from "./prodprog-prod.model";
+import {ProductionEntity, ProductionEntityPost} from "./prodprog-prod.model";
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { first, tap } from 'rxjs';
@@ -20,8 +20,8 @@ import {FormsModule} from '@angular/forms';
 })
 export class ProdprogComponent implements OnInit {
 
-  ProdprogResult: ProdprogResult[] = [];
-  ProdprogArticleResult: ProdprogArticleResult[] = []
+  entity: ProductionEntity[] = [];
+  postEntity: ProductionEntityPost[] = [];
 
   displayedColumns = [
       'articleNumber',
@@ -38,16 +38,27 @@ export class ProdprogComponent implements OnInit {
   }
 
   search() {
-      this.ProdprogProdService.findAll()
+      this.ProdprogProdService.findAllCurrentProds()
           .pipe(
               first(),
               tap(result => {
-                  this.ProdprogResult = result
-                  this.ProdprogArticleResult = this.ProdprogResult[0].articles;
+                  this.entity = result;
               })
           )
           .subscribe()
-          console.log(this.ProdprogResult)
+  }
+
+  create(): void {
+
+    this.entity.forEach(
+      entity => this.postEntity.push(
+        new ProductionEntityPost(entity.article, entity.periodNplusOne, entity.periodNplusTwo, entity.periodNplusThree)
+      )
+    )
+
+    this.ProdprogProdService.post(this.postEntity).subscribe(
+      result => this.search()
+    );
   }
 
 }

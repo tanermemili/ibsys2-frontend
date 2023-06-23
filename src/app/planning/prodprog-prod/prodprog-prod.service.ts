@@ -1,22 +1,24 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, first, throwError } from "rxjs";
-import { ProdprogArticleInput, ProdprogResult } from "./prodprog-prod.model";
+import {ProductionEntity, ProductionEntityPost} from "./prodprog-prod.model";
+import {DispositionEigenfertigungArticleInput} from "../disposition-eigenfertigung/disposition-eigenfertigung.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProdprogProdService {
-  readonly #baseUrl = "http://localhost:8080/api/productionplan/production"
+  readonly #baseUrl = "http://localhost:8080/api/productionplan/production/all"
+  readonly #baseUrl2: string = "http://localhost:8080/api/productionplan/production/new"
 
   constructor(private readonly httpClient: HttpClient) {
       console.log('Prodprog.start')
   }
 
-  findAll(): Observable<ProdprogResult[]> {
+  findAllCurrentProds(): Observable<ProductionEntity[]> {
       return (
           this.httpClient
-          .get<ProdprogResult[]>(this.#baseUrl)
+          .get<ProductionEntity[]>(this.#baseUrl)
           .pipe(
               catchError(this.handleError),
               first()
@@ -24,9 +26,10 @@ export class ProdprogProdService {
       )
   }
 
-  plan(prodprogInput: ProdprogArticleInput): Observable<ProdprogArticleInput> {
-      return this.httpClient
-          .post<ProdprogArticleInput>(this.#baseUrl, prodprogInput, {})
+  post(input: ProductionEntityPost[]) {
+    return (
+      this.httpClient.post(this.#baseUrl2, input, {})
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

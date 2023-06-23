@@ -1,9 +1,9 @@
 <mat-tab-group>
     <mat-tab label="Produktionsprogramm">
-        <table mat-table [dataSource]="ProdprogResult">
+        <table mat-table [dataSource]="entity">
             <ng-container matColumnDef="articleNumber">
                 <th mat-header-cell *matHeaderCellDef>Artikel</th>
-                <td mat-cell *matCellDef="let element">{{ element.articleNumber }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.article }}</td>
             </ng-container>
             <ng-container matColumnDef="periodN">
                 <th mat-header-cell *matHeaderCellDef>Diese Periode</th>
@@ -20,10 +20,12 @@
             <ng-container matColumnDef="periodNplusThree">
                 <th mat-header-cell *matHeaderCellDef>Periode+3</th>
                 <td mat-cell *matCellDef="let element"><input matInput type="number" [(ngModel)] = "element.periodNplusThree" min="0" oninput="validity.valid||(value='0');"> </td>
+            </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
     </mat-tab>
+  <!--
     <mat-tab label="Prognose">
         <table mat-table [dataSource]="ProdprogArticleResult">
             <ng-container matColumnDef="articleNumber">
@@ -50,4 +52,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
     </mat-tab>
+    -->
 </mat-tab-group>
+
+<button mat-button (click)="create()" >test</button>
