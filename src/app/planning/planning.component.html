@@ -18,7 +18,8 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Kaufteildisposition Teil 1</ng-template>
-    <button mat-raised-button color="accent" matStepperNext>weiter</button>
+    <prodprog-prod></prodprog-prod>
+    <button mat-raised-button color="accent" (click)="clickNextProdprogProd($event)" matStepperNext>weiter</button>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Kaufteildisposition Teil 2</ng-template>

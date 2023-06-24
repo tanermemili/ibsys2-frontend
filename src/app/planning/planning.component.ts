@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import log from 'loglevel';
-import { PlanningService } from './planning.service';
-import { PurchasePartDispositionComponent } from './purchase-part-disposition/purchase-part-disposition.component';
-import { ForecastComponent } from './forecast/forecast.component';
 import { DispositionEigenfertigungComponent } from './disposition-eigenfertigung/disposition-eigenfertigung.component';
+import { ForecastComponent } from './forecast/forecast.component';
+import { PlanningService } from './planning.service';
+import { ProdprogComponent } from './prodprog-prod/prodprog-prod.component';
+import { PurchasePartDispositionComponent } from './purchase-part-disposition/purchase-part-disposition.component';
 
 @Component({
   selector: 'app-planning',
@@ -14,6 +15,7 @@ export class PlanningComponent {
   @ViewChild(PurchasePartDispositionComponent) purchasePartDispositionComponent!: any;
   @ViewChild(ForecastComponent) forecastComponent!: any;
   @ViewChild(DispositionEigenfertigungComponent) dispositionEigenfertigungComponent!: any;
+  @ViewChild(ProdprogComponent) prodprogComponent!: any;
   tableData: any[] = [
     { artikel: 'P1', dieseWoche: 0, periode1: 0, periode2: 0, periode3: 0, },
     { artikel: 'P2', dieseWoche: 0, periode1: 0, periode2: 0, periode3: 0, },
@@ -60,6 +62,8 @@ export class PlanningComponent {
       case 3: {
         // Kaufteildisposition Teil 1
         log.debug('Kaufteildisposition Teil 1 selected');
+        this.prodprogComponent.search();
+        this.prodprogComponent.search2();
         break;
       }
       case 4: {
@@ -85,5 +89,9 @@ export class PlanningComponent {
 
   clickNextPurchasePartDisposition(_: any) {
     this.purchasePartDispositionComponent.savePurchaseParts();
+  }
+
+  clickNextProdprogProd(_: any) {
+    this.prodprogComponent.create();
   }
 }

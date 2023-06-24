@@ -7,7 +7,6 @@ import { FutureInwardStockMovementsComponent } from './future-inward-stock-movem
 import { ImportXmlComponent } from './import-xml/import-xml.component';
 import { LoginComponent } from './login/login.component';
 import { PlanningComponent } from './planning/planning.component';
-import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
 import { PurchasePartDispositionComponent } from './planning/purchase-part-disposition/purchase-part-disposition.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
@@ -24,8 +23,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'warehouse_stock', component: WarehouseStockComponent },
   { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent },
-  { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent },
-  { path: 'prodprog', component: ProdprogComponent }
+  { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent }
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
