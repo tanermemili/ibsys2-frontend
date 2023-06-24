@@ -27,6 +27,8 @@ import { DispositionEigenfertigungComponent } from './planning/disposition-eigen
 import { ForecastComponent } from './planning/forecast/forecast.component';
 import { PlanningComponent } from './planning/planning.component';
 import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
+import { PlanendComponent } from './planning/planend/planend.component';
+import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { PurchasePartDispositionComponent } from './planning/purchase-part-disposition/purchase-part-disposition.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
@@ -48,6 +50,7 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     PurchasePartDispositionComponent,
     MessagesComponent,
     ForecastComponent,
+    PlanendComponent
   ],
   imports: [
     DispositionEigenfertigungComponent,
@@ -67,9 +70,10 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-MatTabsModule,
-    ProdprogComponent
-
+    MatTabsModule,
+    ProdprogComponent,
+    CdkDropList,
+    CdkDrag
   ],
   providers: [],
   bootstrap: [AppComponent]
