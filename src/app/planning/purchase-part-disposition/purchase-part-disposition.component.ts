@@ -12,7 +12,25 @@ export class PurchasePartDispositionComponent {
   purchasePartsOutput: PurchasePartOutputDataType[] = [];
   quantityNeed: QuantityNeedDataType[] = [];
   mergedPurchasePartsQuantityNeed: PurchasePartDataType[] = [];
-  constructor(private planningService: PlanningService) {}
+  displayedColumns = [
+    'article',
+    'initialStock',
+    'quantityNeedP1',
+    'quantityNeedP2',
+    'quantityNeedP3',
+    'deliveryTimeFast',
+    'deliveryTimeWithDeviation',
+    'requirementN',
+    'requirementNplusOne',
+    'requirementNplusTwo',
+    'requirementNplusThree',
+    'discountQuantity',
+    'orderQuantity',
+    'orderType',
+    'orderColor'
+  ];
+
+  constructor(private planningService: PlanningService) { }
 
   ngOnInit() {
     this.getPurchasePartsAndQuantityNeed();
@@ -73,7 +91,7 @@ export class PurchasePartDispositionComponent {
   private buildJsonOutput() {
     this.purchasePartsOutput = [];
     this.purchaseParts.forEach((purchasePart: any, index: any) => {
-      if (purchasePart.orderType != null ) {
+      if (purchasePart.orderType != null) {
         this.purchasePartsOutput.push({
           article: purchasePart.itemNumber,
           quantity: purchasePart.orderQuantity,

@@ -1,79 +1,52 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="app-sidenav" mode="side" opened="true">
-
-                <!-- <img class="logo" src="assets/images/logo.png" alt="logo"> -->
-
-    <br>
-
-       <p> <button class="chevron-button sidenav-button" type="button" mat-button (click)="isExpanded = !isExpanded" [ngClass]="{'rotated': isExpanded}">
-            <mat-icon>chevron_right</mat-icon>
-            </button></p>
-
-    <br>
-
-         <button mat-button routerLink="/dashboard">
+        <!-- <img class="logo" src="assets/images/logo.png" alt="logo"> -->
+        <br>
+        <p>
+            <button class="chevron-button sidenav-button" type="button" mat-button (click)="isExpanded = !isExpanded"
+                [ngClass]="{'rotated': isExpanded}">
+                <mat-icon>chevron_right</mat-icon>
+            </button>
+        </p>
+        <br>
+        <button mat-button routerLink="/dashboard">
             <mat-icon>language</mat-icon>
             <span *ngIf="isExpanded"> Dashboard</span>
-            </button>
-
-    <br>
-
+        </button>
+        <br>
         <button mat-button routerLink="/import_xml">
             <mat-icon>download</mat-icon>
             <span *ngIf="isExpanded">Import-XML</span>
-            </button>
-
-    <br>
-
+        </button>
+        <br>
         <button mat-button routerLink="/warehouse_stock">
             <mat-icon>inventory_2</mat-icon>
             <span *ngIf="isExpanded"> Bestand</span>
-            </button>
-
-     <br>
-
+        </button>
+        <br>
         <button mat-button routerLink="/planning">
             <mat-icon>linear_scale</mat-icon>
             <span *ngIf="isExpanded"> Planung</span>
-            </button>
-
-    <br>
-
+        </button>
+        <br>
         <button mat-button routerLink="/export_xml">
             <mat-icon>upload</mat-icon>
             <span *ngIf="isExpanded"> Export-XML</span>
-            </button>
-
-    <br>
-
+        </button>
+        <br>
         <button mat-button routerLink="/profile">
             <mat-icon>exit_to_app</mat-icon>
             <span *ngIf="isExpanded"> Mein Profil</span>
-            </button>
-
-            <br>
-
-        <button mat-button routerLink="/prodprog">
-            <mat-icon>description</mat-icon>
-            <span *ngIf="isExpanded"> ProdProg</span>
-            </button>
-
-    <br>
-
+        </button>
+        <br>
         <button mat-button routerLink="/login">
             <mat-icon>logout</mat-icon>
             <span *ngIf="isExpanded">Logout</span>
-            </button>
-
-        <button mat-button routerLink="/disposition-eigenfertigung">
-            <mat-icon>Dispo</mat-icon>
-            <span *ngIf="isExpanded">Dispo</span>
-            </button>
+        </button>
     </mat-sidenav>
-  
+
     <div class="sidenav-content">
         <router-outlet></router-outlet>
-         <app-messages></app-messages>
+        <app-messages></app-messages>
     </div>
-    
-  </mat-sidenav-container>
+</mat-sidenav-container>
