@@ -8,6 +8,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import {MatTabsModule} from "@angular/material/tabs";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogOverviewComponent} from "../shared/dialog-overview/dialog-overview.component";
 
 @Component({
   selector: 'app-capacity-planning',
@@ -46,10 +48,19 @@ export class CapacityPlanningComponent implements OnInit {
     'description',
   ]
 
-  constructor(private readonly capacityPlanningService: CapacityPlanningService) {}
+  constructor(
+    private readonly capacityPlanningService: CapacityPlanningService,
+    private readonly dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.search();
+  }
+
+  openDialog(text: string): void {
+    const dialogRef = this.dialog.open(DialogOverviewComponent,{
+      data: text
+    })
   }
 
   search() {
@@ -59,6 +70,9 @@ export class CapacityPlanningComponent implements OnInit {
          let productions: CapacityPlanningProduction[] = result;
          let articles: CapacityPlanningArticle[] = []
          let overviewResult: CapacityPlanningOverview[] = []
+         if(productions.length == 0) {
+           this.openDialog("Please proceed with the Disposition Eigenfertigung!")
+         }
          productions.forEach(
            production => {
              articles.push(new CapacityPlanningArticle(production.article, production.quantity))
@@ -67,6 +81,7 @@ export class CapacityPlanningComponent implements OnInit {
          this.articles = articles
          this.capacityPlanningService.postArticles(articles).subscribe(result => {
            console.log(result)
+           this.overviewResults = overviewResult;
            result.workingTimePlan.forEach(element => {
              articles.forEach(article => {
                if(article.article == element.articleNumber) {
@@ -75,8 +90,13 @@ export class CapacityPlanningComponent implements OnInit {
              })
            })
            overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
+           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
+           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
+           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
+           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
+           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
+
          })
-         this.overviewResults = overviewResult;
          console.log(this.articles)
          console.log(this.overviewResults)
        })

@@ -7,8 +7,6 @@ import {
   CapacityPlanningProduction,
   CapacityPlanningResult
 } from "./capacity-planning.model";
-import {DispositionEigenfertigungResult} from "../disposition-eigenfertigung/disposition-eigenfertigung.model";
-import {Overlay} from "@angular/cdk/overlay";
 
 @Injectable({
   providedIn: 'root'
