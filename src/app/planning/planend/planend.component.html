@@ -1,10 +1,4 @@
 <h2>Planung</h2>
-<div class="example-input-wrapper">
-  <label for="duration">Animation duration:</label>
-  <input id="duration" value="2000" type="number" min="0" step="100" #duration>
-</div>
-<mat-stepper orientation="vertical" [animationDuration]="duration.value">
-  <mat-step>
     <ng-template matStepLabel>Eingabetabelle</ng-template>
     <p>Vertriebswunsch</p>
     <table>
@@ -101,12 +95,3 @@
         <td><mat-icon>drag_indicator</mat-icon></td>
       </tr>
     </table>
-
-    <button mat-raised-button color="accent" matStepperPrevious>zurück</button>
-    <button mat-raised-button color="accent" [routerLink]="['/export-xml']">
-      <mat-icon>checkmark</mat-icon>
-      speichern
-    </button>
-  </mat-step>
-
-</mat-stepper>
