@@ -32,6 +32,7 @@ import { ForecastComponent } from './planning/forecast/forecast.component';
 import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { PlanendComponent } from './planning/planend/planend.component';
+import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { PlanendComponent } from './planning/planend/planend.component';
     PurchasePartDispositionComponent,
     MessagesComponent,
     ForecastComponent,
-    PlanendComponent,
+    PlanendComponent
   ],
   imports: [
     DispositionEigenfertigungComponent,
@@ -70,8 +71,9 @@ import { PlanendComponent } from './planning/planend/planend.component';
     MatListModule,
     MatToolbarModule,
     MatTabsModule,
-    ProdprogComponent
-
+    ProdprogComponent,
+    CdkDropList,
+    CdkDrag
   ],
   providers: [],
   bootstrap: [AppComponent]
