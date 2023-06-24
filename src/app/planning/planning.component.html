@@ -1,12 +1,16 @@
-<h2>Planung</h2> 
-<mat-stepper orientation="vertical" [animationDuration]="planningService.stepperDuration" (selectionChange)="selectionChange($event)">
+<h2>Planung</h2>
+<mat-stepper orientation="vertical" [animationDuration]="planningService.stepperDuration"
+  (selectionChange)="selectionChange($event)">
   <mat-step>
     <ng-template matStepLabel>Prognose, Produktionseingabe und Lagerprognose</ng-template>
     <app-forecast></app-forecast>
+    <button mat-raised-button color="accent" (click)="clickSaveForecast($event)" matStepperNext>weiter</button>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Disposition Eigenfertigung</ng-template>
-    <button mat-raised-button color="accent" matStepperNext>weiter</button>
+    <disposition-eigenfertigung></disposition-eigenfertigung>
+    <button mat-raised-button color="accent" (click)="clickSaveDispositionEigenfertigung($event)"
+      matStepperNext>weiter</button>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Kapazitätsbedarf</ng-template>
@@ -19,5 +23,6 @@
   <mat-step>
     <ng-template matStepLabel>Kaufteildisposition Teil 2</ng-template>
     <app-purchase-part-disposition></app-purchase-part-disposition>
-    <button mat-raised-button color="accent" (click)="clickNextPurchasePartDisposition($event)" matStepperNext>weiter</button>
+    <button mat-raised-button color="accent" (click)="clickNextPurchasePartDisposition($event)"
+      matStepperNext>weiter</button>
   </mat-step>
