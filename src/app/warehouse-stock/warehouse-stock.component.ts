@@ -8,7 +8,16 @@ import { WarehouseStock, WarehouseStockService } from './warehousestock.service'
   styleUrls: ['./warehouse-stock.component.css']
 })
 export class WarehouseStockComponent {
-  warehousestocks: WarehouseStock[] | undefined;
+  warehousestocks: WarehouseStock[] = [];
+  displayedColumns = [
+    'id',
+    'amount',
+    'startamout',
+    'pct',
+    'price',
+    'stockvalue'
+  ];
+
 
   constructor(private warehouseStockService: WarehouseStockService, private location: Location) {}
   
