@@ -78,11 +78,10 @@ export class CapacityPlanningArticle {
 
 export class CapacityPlanningOverview {
   description: string
-  workstations: Map<number, number>
+  workstations: Map<number, number> = new Map<number, number>
 
-  constructor(description: string, workstations: Map<number, number>) {
+  constructor(description: string) {
     this.description = description;
-    this.workstations = workstations;
   }
 
 }

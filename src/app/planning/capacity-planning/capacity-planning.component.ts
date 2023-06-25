@@ -1,8 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CapacityPlanningService} from "./capacity-planning.service";
-import {CapacityPlanningArticle, CapacityPlanningOverview, CapacityPlanningProduction} from "./capacity-planning.model";
-import {first, map, tap} from "rxjs";
+import {
+    CapacityPlanningArticle,
+    CapacityPlanningOverview,
+    CapacityPlanningProduction,
+    CapacityPlanningResult
+} from "./capacity-planning.model";
+import {first, tap} from "rxjs";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
@@ -43,10 +48,25 @@ export class CapacityPlanningComponent implements OnInit {
     '14',
     '15',
   ]
-
   displayedColumns2 = [
-    'description',
+      'description',
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
+      '10',
+      '11',
+      '12',
+      '13',
+      '14',
+      '15',
   ]
+
 
   constructor(
     private readonly capacityPlanningService: CapacityPlanningService,
@@ -79,26 +99,53 @@ export class CapacityPlanningComponent implements OnInit {
            }
          )
          this.articles = articles
-         this.capacityPlanningService.postArticles(articles).subscribe(result => {
-           console.log(result)
-           this.overviewResults = overviewResult;
-           result.workingTimePlan.forEach(element => {
-             articles.forEach(article => {
-               if(article.article == element.articleNumber) {
-                 article.workstations.set(element.workstationNumber, 20)
-               }
+         this.capacityPlanningService.postArticles(articles).subscribe(result2 => {
+             let results: CapacityPlanningResult = result2;
+             console.log(results)
+             result2.workingTimePlan.forEach(element => {
+                 articles.forEach(article => {
+                   if(article.article == element.articleNumber) {
+                     article.workstations.set(element.workstationNumber, 20)
+                   }
+                 })
              })
-           })
-           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
-           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
-           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
-           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
-           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
-           overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf", result.capacityPlanningResult.newCapacity_reqs))
+             overviewResult.push(new CapacityPlanningOverview("Kapazitätsbedarf"));
+             overviewResult.push(new CapacityPlanningOverview("Rüstzeit"));
+             overviewResult.push(new CapacityPlanningOverview("KapBed. (Rückstand)"));
+             overviewResult.push(new CapacityPlanningOverview("Rüstzeit (Rückstand)"));
+             overviewResult.push(new CapacityPlanningOverview("Gesamtkapazitätsbedarf"));
+             overviewResult.push(new CapacityPlanningOverview("Überstunden"));
+             overviewResult.push(new CapacityPlanningOverview("Schicht"));
 
+             for (const [key, value] of Object.entries(results.capacityPlanningResult.newCapacity_reqs)) {
+                 overviewResult[0].workstations.set(parseInt(key), value);
+             }
+
+             for (const [key, value] of Object.entries(results.capacityPlanningResult.newSetUpTime)) {
+                 overviewResult[1].workstations.set(parseInt(key), value);
+             }
+
+             for (const [key, value] of Object.entries(results.capacityPlanningResult.behindScheduleCapacity)) {
+                 overviewResult[2].workstations.set(parseInt(key), value);
+             }
+
+             for (const [key, value] of Object.entries(results.capacityPlanningResult.behindScheduleSetUpTime)) {
+                 overviewResult[3].workstations.set(parseInt(key), value);
+             }
+
+             for (const [key, value] of Object.entries(results.capacityPlanningResult.totalCapacityRequirement)) {
+                 overviewResult[4].workstations.set(parseInt(key), value);
+             }
+
+             for (const item of results.capacityPlanningResult.workstationsWithOverTime) {
+                 const { station, shift, overtime } = item.workingtime;
+                 overviewResult[5].workstations.set(station, overtime);
+                 overviewResult[6].workstations.set(station, shift);
+             }
+
+             this.overviewResults = overviewResult;
+             console.log(overviewResult)
          })
-         console.log(this.articles)
-         console.log(this.overviewResults)
        })
      )
        .subscribe()
