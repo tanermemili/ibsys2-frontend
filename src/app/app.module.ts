@@ -35,7 +35,7 @@ import { StockOverviewComponent } from './stock-overview/stock-overview.componen
 import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.component';
 import { CapacityPlanningComponent } from './planning/capacity-planning/capacity-planning.component';
 import {AuthGuard} from "./auth/AuthGuard";
-
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -55,6 +55,7 @@ import {AuthGuard} from "./auth/AuthGuard";
     PlanendComponent
   ],
   imports: [
+    MatSelectModule,
     DispositionEigenfertigungComponent,
     BrowserModule,
     AppRoutingModule,
