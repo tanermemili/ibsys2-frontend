@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { XMLParser } from 'fast-xml-parser';
-import { fileURLToPath } from 'url';
 import { XmlMapperService } from '../xml-mapper.service';
-import { OutputService } from '../output.service';
-import log from 'loglevel';
+import { PlanendService } from '../planning/planend/planend.service';
+import * as XmlJs from 'xml-js';
 
 @Component({
   selector: 'app-export-xml',
@@ -12,57 +9,26 @@ import log from 'loglevel';
   styleUrls: ['./export-xml.component.css']
 })
 export class ExportXmlComponent {
-
-  constructor(private http: HttpClient, private xmlMapperService: XmlMapperService, private outputService: OutputService) {}
-  
-  fetchData() {
-    this.outputService.getOutput().subscribe({
-      next: (data) => {
-        log.debug('/api/input successful');
-        const originalString = (data as string);
-        var convert = require('xml-js');
-        var options = {compact: true, ignoreComment: true, spaces: 4};
-        let test = JSON.parse(originalString);
-        var result = convert.js2xml(this.xmlMapperService.mapJsontoXmlrdyJson(test), options);
-        console.log(result);
-        this.result = result;
-      },
-      error: (e) => log.debug('/api/input Error'),
-      complete: () => {
-        log.debug('/api/output completed');
-      }
-    });
-
-
-    this.http.get('api/output',{responseType:'text'}).subscribe(data => {
-      const originalString = (data as string);
-      var convert = require('xml-js');
-      var options = {compact: true, ignoreComment: true, spaces: 4};
-      let test = JSON.parse(originalString);
-      var result = convert.js2xml(this.xmlMapperService.mapJsontoXmlrdyJson(test), options);
-      console.log(result);
-      this.result = result;
-    });
-    const blob = new Blob([this.result], { type: 'application/xml' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'export.xml';
-    a.click();
-    window.URL.revokeObjectURL(url);
-    a.remove();
-  }
-
-  result: string = '';
+  constructor(
+    private xmlMapperService: XmlMapperService,
+    private planendDataState: PlanendService,
+  ) {}
 
   downloadFile() {
-    const blob = new Blob([this.result], { type: 'application/xml' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'export.xml';
-    a.click();
-    window.URL.revokeObjectURL(url);
-    a.remove();
+    const planendData = this.planendDataState.getPlanedData()
+    if (planendData) {
+      const options = { compact: true, ignoreComment: true, spaces: 4 };
+      const result = XmlJs.js2xml(this.xmlMapperService.mapSupplyChainInputToXmlRdyJson(planendData), options);
+
+      console.log('---------------ExportXmlComponent', result)
+      const blob = new Blob([result], { type: 'application/xml' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'export.xml';
+      a.click();
+      window.URL.revokeObjectURL(url);
+      a.remove();
+    }
   }
 }

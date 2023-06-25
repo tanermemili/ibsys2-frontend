@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { ProdprogProdService } from "./prodprog-prod.service";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
-import {ProductionEntity, ProductionEntityPost, PredictionEntity} from "./prodprog-prod.model";
-import { MatTableModule } from '@angular/material/table';
+import { Component, OnInit } from "@angular/core";
+import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 import { first, tap } from 'rxjs';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import { PredictionEntity, ProductionEntity, ProductionEntityPost } from "./prodprog-prod.model";
+import { ProdprogProdService } from "./prodprog-prod.service";
 
 @Component({
   selector: 'prodprog-prod',
@@ -25,41 +25,41 @@ export class ProdprogComponent implements OnInit {
   predEntity: PredictionEntity[] = [];
 
   displayedColumns = [
-      'articleNumber',
-      'periodN',
-      'periodNplusOne',
-      'periodNplusTwo',
-      'periodNplusThree'
+    'articleNumber',
+    'periodN',
+    'periodNplusOne',
+    'periodNplusTwo',
+    'periodNplusThree'
   ]
 
-  constructor(private readonly ProdprogProdService: ProdprogProdService) {}
+  constructor(private readonly ProdprogProdService: ProdprogProdService) { }
 
   ngOnInit(): void {
-      this.search();
-      this.search2();
+    this.search();
+    this.search2();
   }
 
   search() {
-      this.ProdprogProdService.findAllCurrentProds()
-          .pipe(
-              first(),
-              tap(result => {
-                  this.entity = result;
-              })
-          )
-          .subscribe()
+    this.ProdprogProdService.findAllCurrentProds()
+      .pipe(
+        first(),
+        tap(result => {
+          this.entity = result;
+        })
+      )
+      .subscribe()
   }
 
   search2() {
     this.ProdprogProdService.findAllCurrentPreds()
-        .pipe(
-            first(),
-            tap(result => {
-                this.predEntity = result;
-            })
-        )
-        .subscribe()
-}
+      .pipe(
+        first(),
+        tap(result => {
+          this.predEntity = result;
+        })
+      )
+      .subscribe()
+  }
 
   create(): void {
 

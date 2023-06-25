@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface ForecastDataType {
@@ -10,6 +10,42 @@ export interface ForecastDataType {
   periodNplusTwo: number; 
   periodNplusThree: number;
 }
+export interface PurchasePartDataType {
+  "id": number;
+  "itemNumber": number;
+  "deliveryTimeWithDeviation": number;
+  "deliveryTimeFast": number;
+  "deliveryTimeJITwithDeviation": number;
+  "discountQuantity": number;
+  "initialStock": number;
+  "requirementN": number;
+  "requirementNplusOne": number;
+  "requirementNplusTwo": number;
+  "requirementNplusThree": number;
+  "futurePeriodArrival": number;
+  "futurePeriodAmount": number;
+  "orderQuantity": number;
+  "orderType": number;
+  "orderColor": string;
+  "p1"?: number;
+  "p2"?: number;
+  "p3"?: number;
+
+}
+
+export interface PurchasePartOutputDataType {
+  "article": number;
+  "quantity": number;
+  "modus": number;
+}
+
+export interface QuantityNeedDataType {
+  "id": number;
+  "itemNumber": number;
+  "p1": number;
+  "p2": number;
+  "p3": number;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +54,9 @@ export class PlanningService {
   stepperDuration: string = '1000';
   private forecastGetUrl: string = '/api/productionplan/forecast';
   private forecastPostUrl: string = '/api/productionplan/forecast/new';
+  private purchasePartDispostionGetUrl: string = '/api/purchasepartdisposition';
+  private purchasePartDispostionPostUrl: string = '/api/purchasepartdisposition/output';
+  private quantityNeedUrl: string = '/api/purchasepartdisposition/quantityneed';
   private httpOptions = {
     headers: new HttpHeaders({
       'responseType': 'text',
@@ -37,6 +76,18 @@ export class PlanningService {
 
   saveForecast(input: any): Observable<Object> {
     return this.http.post<Object>(this.forecastPostUrl, input, this.httpOptions);
+  }
+
+  getPurchaseParts(): Observable<Object> {
+    return this.http.get<PurchasePartDataType[]>(this.purchasePartDispostionGetUrl);
+  }
+
+  savePurchaseParts(input: any): Observable<Object> {
+    return this.http.post<Object>(this.purchasePartDispostionPostUrl, input, this.httpOptions);
+  }
+
+  getQuantityNeed(): Observable<Object> {
+    return this.http.get<QuantityNeedDataType[]>(this.quantityNeedUrl);
   }
 
 }
