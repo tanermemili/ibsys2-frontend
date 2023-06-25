@@ -32,6 +32,7 @@ import { ForecastComponent } from './planning/forecast/forecast.component';
 import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CapacityPlanningComponent } from './planning/capacity-planning/capacity-planning.component';
+import {AuthGuard} from "./auth/AuthGuard";
 
 
 @NgModule({
@@ -72,7 +73,7 @@ import { CapacityPlanningComponent } from './planning/capacity-planning/capacity
     ProdprogComponent,
     CapacityPlanningComponent
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

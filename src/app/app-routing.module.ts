@@ -14,22 +14,23 @@ import { PurchasePartDispositionComponent } from './purchase-part-disposition/pu
 import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
 import { DispositionEigenfertigungComponent } from './planning/disposition-eigenfertigung/disposition-eigenfertigung.component';
 import {CapacityPlanningComponent} from "./planning/capacity-planning/capacity-planning.component";
+import {AuthGuard} from "./auth/AuthGuard";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'import_xml', component: ImportXmlComponent},
-  { path: 'stock_overview', component: StockOverviewComponent},
-  { path: 'planning', component: PlanningComponent},
-  { path: 'export_xml', component: ExportXmlComponent},
-  { path: 'profile', component: ProfileComponent},
-  { path: 'warehouse_stock', component: WarehouseStockComponent},
-  { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent},
-  { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent},
-  { path: 'prodprog', component: ProdprogComponent},
-  { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent},
-  { path: 'capacity-planning', component: CapacityPlanningComponent}
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'import_xml', component: ImportXmlComponent, canActivate: [AuthGuard] },
+  { path: 'stock_overview', component: StockOverviewComponent, canActivate: [AuthGuard] },
+  { path: 'planning', component: PlanningComponent, canActivate: [AuthGuard] },
+  { path: 'export_xml', component: ExportXmlComponent, canActivate: [AuthGuard]},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'warehouse_stock', component: WarehouseStockComponent, canActivate: [AuthGuard]},
+  { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent, canActivate: [AuthGuard]},
+  { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent, canActivate: [AuthGuard]},
+  { path: 'prodprog', component: ProdprogComponent, canActivate: [AuthGuard]},
+  { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent, canActivate: [AuthGuard]},
+  { path: 'capacity-planning', component: CapacityPlanningComponent, canActivate: [AuthGuard]}
 
 ];
 
