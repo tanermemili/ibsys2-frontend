@@ -1,23 +1,22 @@
 .mat-stepper-vertical {
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
-    background: #98E5E0;
-    align-items: center;
-    overflow-y: auto;
+  width: 100%;
+  border-radius: 25px;
+  background: #98E5E0;
+}
 
+::ng-deep .mat-vertical-content {
+  overflow: auto;
 }
 
 ::ng-deep .mat-step-header .mat-step-icon-state-number {
-    /* background-color: #ba2805; */
-    background-color: #333333;
-    color: #fff;
-  }
-  
-  ::ng-deep .mat-step-header .mat-step-icon-selected,
-  ::ng-deep .mat-step-header .mat-step-icon-state-done,
-  ::ng-deep .mat-step-header .mat-step-icon-state-edit {
-    background-color: #FF4081;
-    color: #fff;
-  }
-  
+  /* background-color: #ba2805; */
+  background-color: #333333;
+  color: #fff;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected,
+::ng-deep .mat-step-header .mat-step-icon-state-done,
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+  background-color: #FF4081;
+  color: #fff;
+}
