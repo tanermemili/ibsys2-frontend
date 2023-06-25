@@ -19,6 +19,10 @@ export class AppComponent implements  OnInit {
     log.debug('AppComponent.constructor()');
   }
 
+  logout() {
+    this.authServie.logout();
+  }
+
   ngOnInit() {
     log.enableAll();
     this.isAuth = this.authServie.isAuthenticated()

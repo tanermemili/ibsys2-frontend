@@ -55,10 +55,10 @@
 
     <br>
 
-        <button mat-button routerLink="/login">
+        <button mat-button (click)="logout()" routerLink="/login">
             <mat-icon>logout</mat-icon>
             <span *ngIf="isExpanded">Logout</span>
-            </button>
+        </button>
 
       <br>
 

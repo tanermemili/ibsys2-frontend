@@ -17,6 +17,10 @@ export class AuthService {
     })
   }
 
+  logout() {
+    this.isAuthenticatedBool = false;
+  }
+
   login(username: string, password: string): boolean {
     console.log("auth service")
     if (username === 'admin' && password === 'p') {

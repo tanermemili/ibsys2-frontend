@@ -30,20 +30,8 @@ const routes: Routes = [
   { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent, canActivate: [AuthGuard]},
   { path: 'prodprog', component: ProdprogComponent, canActivate: [AuthGuard]},
   { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent, canActivate: [AuthGuard]},
-  { path: 'capacity-planning', component: CapacityPlanningComponent, canActivate: [AuthGuard]}
-
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'import_xml', component: ImportXmlComponent},
-  { path: 'stock_overview', component: StockOverviewComponent},
-  { path: 'planning', component: PlanningComponent},
-  { path: 'export_xml', component: ExportXmlComponent},
-  { path: 'profile', component: ProfileComponent},
-  { path: 'warehouse_stock', component: WarehouseStockComponent},
-  { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent},
-  { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent},
-  { path: 'prodprog', component: ProdprogComponent},
-  { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent},
-  { path: 'planend', component: PlanendComponent}
+  { path: 'capacity-planning', component: CapacityPlanningComponent, canActivate: [AuthGuard]},
+  { path: 'planend', component: PlanendComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
