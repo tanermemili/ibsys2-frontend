@@ -7,7 +7,7 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class AuthService {
 
-  private isAuthenticatedd = false;
+  private isAuthenticatedBool = false;
 
   constructor(private readonly dialog: MatDialog) { }
 
@@ -20,18 +20,16 @@ export class AuthService {
   login(username: string, password: string): boolean {
     console.log("auth service")
     if (username === 'admin' && password === 'p') {
-      console.log("true")
-      this.isAuthenticatedd = true;
+      this.isAuthenticatedBool = true;
       return true;
     } else {
-      console.log("false")
-      this.openDialog('First login')
-      this.isAuthenticatedd = false;
+      this.openDialog('Wrong credentials')
+      this.isAuthenticatedBool = false;
       return false;
     }
   }
 
   isAuthenticated(): boolean {
-    return this.isAuthenticatedd;
+    return this.isAuthenticatedBool;
   }
 }
