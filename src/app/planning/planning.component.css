@@ -1,7 +1,6 @@
 .mat-stepper-vertical {
   width: 100%;
   border-radius: 25px;
-  background: #98E5E0;
 }
 
 ::ng-deep .mat-vertical-content {
