@@ -10,7 +10,7 @@ import { PlanendService } from './planend.service';
   templateUrl: './planend.component.html',
   styleUrls: ['./planend.component.css']
 })
-export class PlanendComponent implements OnInit {
+export class PlanendComponent {
   sellDirectFormGroups: FormGroup[] = []
   productionList: Production[] = []
   planendData$ = this.planendDataState.getPlanendDataSubject()
@@ -20,9 +20,9 @@ export class PlanendComponent implements OnInit {
     private outputService: OutputService
   ) { }
 
-  ngOnInit(): void {
-    this.startOutput();
-  }
+  // ngOnInit(): void {
+  //   this.startOutput();
+  // }
 
   startOutput() {
     this.outputService.getOutput().subscribe({

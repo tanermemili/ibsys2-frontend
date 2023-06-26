@@ -35,9 +35,9 @@ export class PurchasePartDispositionComponent {
 
   constructor(private planningService: PlanningService, private readonly dialog: MatDialog) { }
 
-  ngOnInit() {
-    this.getPurchasePartsAndQuantityNeed();
-  }
+  // ngOnInit() {
+  //   this.getPurchasePartsAndQuantityNeed();
+  // }
 
   colorCircle(color: string): string {
     switch (color) {

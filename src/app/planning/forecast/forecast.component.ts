@@ -21,7 +21,10 @@ export class ForecastComponent {
   constructor(private planningService: PlanningService, public planningComponent: PlanningComponent) {}
 
   ngOnInit() {
-    this.getForecast();
+    setTimeout(() => {
+      // Your API request code here
+      this.getForecast();
+    }, 1000); // Delay of 1000 milliseconds (1 second)
   }
 
   getForecast() {
