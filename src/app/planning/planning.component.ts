@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import log from 'loglevel';
+import { CapacityPlanningComponent } from './capacity-planning/capacity-planning.component';
 import { DispositionEigenfertigungComponent } from './disposition-eigenfertigung/disposition-eigenfertigung.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { PlanningService } from './planning.service';
@@ -16,6 +17,7 @@ export class PlanningComponent {
   @ViewChild(ForecastComponent) forecastComponent!: any;
   @ViewChild(DispositionEigenfertigungComponent) dispositionEigenfertigungComponent!: any;
   @ViewChild(ProdprogComponent) prodprogComponent!: any;
+  @ViewChild(CapacityPlanningComponent) capacityPlanningComponent!: any;
   tableData: any[] = [
     { artikel: 'P1', dieseWoche: 0, periode1: 0, periode2: 0, periode3: 0, },
     { artikel: 'P2', dieseWoche: 0, periode1: 0, periode2: 0, periode3: 0, },
@@ -57,6 +59,7 @@ export class PlanningComponent {
       case 2: {
         // Kapazitätsbedarf
         log.debug('Kapazitätsbedarf selected');
+        this.capacityPlanningComponent.search();
         break;
       }
       case 3: {

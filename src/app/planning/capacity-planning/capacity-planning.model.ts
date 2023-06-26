@@ -37,11 +37,11 @@ export interface CapacityPlanningResult {
 
 export class CapacityPlanningInput {
   articleNumber: number
-  orderQuanity: number
+  orderQuantity: number
 
-  constructor(articleNumber: number, orderQuanity: number) {
+  constructor(articleNumber: number, orderQuantity: number) {
     this.articleNumber = articleNumber
-    this.orderQuanity = orderQuanity;
+    this.orderQuantity = orderQuantity;
   }
 
 }
