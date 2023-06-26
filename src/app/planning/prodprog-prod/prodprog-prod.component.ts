@@ -18,7 +18,7 @@ import { ProdprogProdService } from "./prodprog-prod.service";
   imports: [CommonModule, HttpClientModule, MatCardModule, MatTableModule, MatTabsModule, MatInputModule, MatFormFieldModule, FormsModule],
   templateUrl: './prodprog-prod.component.html'
 })
-export class ProdprogComponent implements OnInit {
+export class ProdprogComponent {
 
   entity: ProductionEntity[] = [];
   postEntity: ProductionEntityPost[] = [];
@@ -34,10 +34,10 @@ export class ProdprogComponent implements OnInit {
 
   constructor(private readonly ProdprogProdService: ProdprogProdService) { }
 
-  ngOnInit(): void {
-    this.search();
-    this.search2();
-  }
+  // ngOnInit(): void {
+  //   this.search();
+  //   this.search2();
+  // }
 
   search() {
     this.ProdprogProdService.findAllCurrentProds()

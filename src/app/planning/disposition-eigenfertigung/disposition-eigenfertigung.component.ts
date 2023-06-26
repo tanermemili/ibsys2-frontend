@@ -35,7 +35,7 @@ import {DialogData} from "../shared/dialog-overview/dialog-overview.model";
     templateUrl: './disposition-eigenfertigung.component.html',
     styleUrls: ['disposition-eigenfertigung.component.scss']
 })
-export class DispositionEigenfertigungComponent implements OnInit {
+export class DispositionEigenfertigungComponent {
 
     dispositionEigenfertigungResult: DispositionEigenfertigungResult[] = [];
     dispositionEigenfertigungArticlesP1: DispositionEigenfertigungArticleResult[] = []
@@ -61,9 +61,9 @@ export class DispositionEigenfertigungComponent implements OnInit {
         private readonly dialog: MatDialog
     ) { }
 
-    ngOnInit(): void {
-        this.search();
-    }
+    // ngOnInit(): void {
+    //     this.search();
+    // }
 
     openDialog(header: string, body: string): void {
         const dialogRef = this.dialog.open(DialogOverviewComponent, {
