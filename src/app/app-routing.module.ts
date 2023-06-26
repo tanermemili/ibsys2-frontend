@@ -7,7 +7,6 @@ import { FutureInwardStockMovementsComponent } from './future-inward-stock-movem
 import { ImportXmlComponent } from './import-xml/import-xml.component';
 import { LoginComponent } from './login/login.component';
 import { DispositionEigenfertigungComponent } from './planning/disposition-eigenfertigung/disposition-eigenfertigung.component';
-import { PlanendComponent } from './planning/planend/planend.component';
 import { PlanningComponent } from './planning/planning.component';
 import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
 import { PurchasePartDispositionComponent } from './planning/purchase-part-disposition/purchase-part-disposition.component';
@@ -29,7 +28,6 @@ const routes: Routes = [
   { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent, canActivate: [AuthGuard] },
   { path: 'prodprog', component: ProdprogComponent, canActivate: [AuthGuard] },
   { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent, canActivate: [AuthGuard] },
-  { path: 'planend', component: PlanendComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

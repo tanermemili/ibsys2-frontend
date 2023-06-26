@@ -28,3 +28,10 @@
     <button mat-raised-button color="accent" (click)="clickNextPurchasePartDisposition($event)"
       matStepperNext>weiter</button>
   </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Eingabetabelle</ng-template>
+    <app-planend></app-planend>
+    <button mat-raised-button color="accent" (click)="clickSaveEingabetabelle($event)"
+      matStepperNext>speichern</button>
+  </mat-step>
+</mat-stepper>

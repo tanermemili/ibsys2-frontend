@@ -34,21 +34,6 @@
             <span *ngIf="isExpanded"> Export-XML</span>
         </button>
         <br>
-        <button mat-button routerLink="/profile">
-            <mat-icon>exit_to_app</mat-icon>
-            <span *ngIf="isExpanded"> Mein Profil</span>
-        </button>
-        <br>
-        <button mat-button routerLink="/planend">
-            <mat-icon>reviews</mat-icon>
-            <span *ngIf="isExpanded"> Planend</span>
-        </button>
-        <br>
-        <button mat-button routerLink="/prodprog">
-            <mat-icon>description</mat-icon>
-            <span *ngIf="isExpanded"> ProdProg</span>
-        </button>
-        <br>
         <button mat-button (click)="logout()" routerLink="/login">
             <mat-icon>logout</mat-icon>
             <span *ngIf="isExpanded">Logout</span>

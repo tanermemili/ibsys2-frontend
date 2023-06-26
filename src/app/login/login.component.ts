@@ -1,6 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {AuthService} from "../auth/AuthService";
-import {Router} from "@angular/router";
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from "@angular/router";
+import { AuthService } from "../auth/AuthService";
 
 
 @Component({
@@ -24,7 +24,7 @@ export class LoginComponent {
   login() {
     console.log("login")
     if (this.authService.login(this.username, this.password)) {
-        console.log("YES")
+      console.log("YES")
       this.router.navigate(['/dashboard'])
     } else {
       // Zeige eine Fehlermeldung an oder ergreife andere Maßnahmen, wenn der Login fehlschlägt

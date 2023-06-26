@@ -1,9 +1,9 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { Production, SellDirectField, SellDirectItem, SupplyChainInput } from './planend.model';
-import { CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import { PlanendService } from './planend.service';
+import { FormGroup } from '@angular/forms';
 import { OutputService } from './output.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Production, SellDirectField, SupplyChainInput } from './planend.model';
+import { PlanendService } from './planend.service';
 
 @Component({
   selector: 'app-planend',
@@ -21,6 +21,10 @@ export class PlanendComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.startOutput();
+  }
+
+  startOutput() {
     this.outputService.getOutput().subscribe({
       next: (data) => {
         const originalString = (data as string);

@@ -1,8 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from "@angular/router";
 import log from 'loglevel';
 import { CapacityPlanningComponent } from './capacity-planning/capacity-planning.component';
 import { DispositionEigenfertigungComponent } from './disposition-eigenfertigung/disposition-eigenfertigung.component';
 import { ForecastComponent } from './forecast/forecast.component';
+import { PlanendComponent } from './planend/planend.component';
 import { PlanningService } from './planning.service';
 import { ProdprogComponent } from './prodprog-prod/prodprog-prod.component';
 import { PurchasePartDispositionComponent } from './purchase-part-disposition/purchase-part-disposition.component';
@@ -18,13 +20,14 @@ export class PlanningComponent {
   @ViewChild(DispositionEigenfertigungComponent) dispositionEigenfertigungComponent!: any;
   @ViewChild(ProdprogComponent) prodprogComponent!: any;
   @ViewChild(CapacityPlanningComponent) capacityPlanningComponent!: any;
+  @ViewChild(PlanningComponent) planningComponent!: any;
   tableData: any[] = [
     { artikel: 'P1', dieseWoche: 0, periode1: 0, periode2: 0, periode3: 0, },
     { artikel: 'P2', dieseWoche: 0, periode1: 0, periode2: 0, periode3: 0, },
     { artikel: 'P3', dieseWoche: 0, periode1: 0, periode2: 0, periode3: 0, }
   ];
 
-  constructor(public planningService: PlanningService) { }
+  constructor(public planningService: PlanningService, private router: Router) { }
 
   calculateSum(item: any): number {
     return item.p1 + item.p2 + item.p3;
@@ -42,6 +45,7 @@ export class PlanningComponent {
     // selectedIndex = 2: Kapazitätsbedarf
     // selectedIndex = 3: Kaufteildisposition Teil 1
     // selectedIndex = 4: Kaufteildisposition Teil 2
+    // selectedIndex = 5: Eingabetabelle
     log.debug('Selection changed, step:', event.selectedIndex);
     switch (selectedIndex) {
       case 0: {
@@ -75,6 +79,11 @@ export class PlanningComponent {
         this.purchasePartDispositionComponent.getPurchasePartsAndQuantityNeed();
         break;
       }
+      case 5: {
+        // Eingabetabelle
+        this.planningComponent.startOutput();
+        break;
+      }
       default: {
         log.debug('No step selected');
         break;
@@ -96,5 +105,9 @@ export class PlanningComponent {
 
   clickNextProdprogProd(_: any) {
     this.prodprogComponent.create();
+  }
+
+  clickSaveEingabetabelle(_: any) {
+    this.router.navigate(['/export_xml'])
   }
 }
