@@ -3,6 +3,7 @@ import { CanActivate, Router } from '@angular/router';
 import {AuthService} from "./AuthService";
 import {DialogOverviewComponent} from "../planning/shared/dialog-overview/dialog-overview.component";
 import {MatDialog} from "@angular/material/dialog";
+import {DialogData} from "../planning/shared/dialog-overview/dialog-overview.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,9 @@ import {MatDialog} from "@angular/material/dialog";
 export class AuthGuard implements CanActivate {
   constructor(private router: Router, private authService: AuthService, private readonly dialog: MatDialog) {}
 
-  openDialog(text: string): void {
-    const dialogRef = this.dialog.open(DialogOverviewComponent,{
-      data: text
+  openDialog(header: string, body: string): void {
+    const dialogRef = this.dialog.open(DialogOverviewComponent, {
+      data: new DialogData(header, body)
     })
   }
 
@@ -22,7 +23,7 @@ export class AuthGuard implements CanActivate {
     if (isAuthenticated) {
       return true;
     } else {
-      this.openDialog('first login!')
+      this.openDialog("Authentication",'Please login first')
       this.router.navigate(['login']);
       return false;
     }
