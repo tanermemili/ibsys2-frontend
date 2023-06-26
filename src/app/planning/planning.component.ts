@@ -101,6 +101,7 @@ export class PlanningComponent {
 
   clickNextPurchasePartDisposition(_: any) {
     this.purchasePartDispositionComponent.savePurchaseParts();
+    this.planendComponent.startOutput();
   }
 
   clickNextProdprogProd(_: any) {

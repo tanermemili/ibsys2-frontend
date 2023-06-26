@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {DialogOverviewComponent} from "../planning/shared/dialog-overview/dialog-overview.component";
 import {MatDialog} from "@angular/material/dialog";
+import {DialogData} from "../planning/shared/dialog-overview/dialog-overview.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class AuthService {
 
   constructor(private readonly dialog: MatDialog) { }
 
-  openDialog(text: string): void {
-    const dialogRef = this.dialog.open(DialogOverviewComponent,{
-      data: text
+  openDialog(header: string, body: string): void {
+    const dialogRef = this.dialog.open(DialogOverviewComponent, {
+      data: new DialogData(header, body)
     })
   }
 
@@ -27,7 +28,7 @@ export class AuthService {
       this.isAuthenticatedBool = true;
       return true;
     } else {
-      this.openDialog('Wrong credentials')
+      this.openDialog("Authentication",'Wrong credentials')
       this.isAuthenticatedBool = false;
       return false;
     }
