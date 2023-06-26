@@ -85,7 +85,7 @@ export class DispositionEigenfertigungComponent {
                         this.dispositionEigenfertigungArticlesP1.length == 0 ||
                         this.dispositionEigenfertigungArticlesP2.length == 0 ||
                         this.dispositionEigenfertigungArticlesP3.length == 0) {
-                          this.openDialog("Disposition Eigenfertigung","Please insert first the input.xml");
+                          this.openDialog("Disposition Eigenfertigung","Bitte erst das Planungstool mit der Result.xml befüllen");
                     }
 
                 })
@@ -99,8 +99,8 @@ export class DispositionEigenfertigungComponent {
                 element.geplanterSicherheitsbestand === null ||
                 element.zusaetzlicheProduktionsauftraege === null
             ) {
-                this.openDialog("Disposition Eigenfertigung","Please set first all values!")
-                throw new Error("Please set first all values!");
+                this.openDialog("Disposition Eigenfertigung","Bitte erst alle Felder ausfüllen!")
+                throw new Error("Bitte erst alle Felder ausfüllen!");
             }
             if (this.geplanterSicherheitsbestand.has(element.articleNumber)) {
                 let currentGelanterSicherheitsbestand: number = this.geplanterSicherheitsbestand.get(element.articleNumber)!
@@ -125,7 +125,7 @@ export class DispositionEigenfertigungComponent {
             this.dispositionEigenfertigungArticlesP1.length == 0 ||
             this.dispositionEigenfertigungArticlesP2.length == 0 ||
             this.dispositionEigenfertigungArticlesP3.length == 0) {
-            this.openDialog("Disposition Eigenfertigung","Please insert first the input.xml");
+            this.openDialog("Disposition Eigenfertigung","Bitte erst das Planungstool mit der Result.xml befüllen");
         }
 
         this.setProperties(this.dispositionEigenfertigungArticlesP1);

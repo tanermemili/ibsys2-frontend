@@ -90,7 +90,7 @@ export class CapacityPlanningComponent {
          let articles: CapacityPlanningArticle[] = []
          let overviewResult: CapacityPlanningOverview[] = []
          if(productions.length == 0) {
-           this.openDialog("Capacity Planning","Please proceed with the Disposition Eigenfertigung!")
+           this.openDialog("Capacity Planning","Bitte beginnen Sie erst mit der Disposition Eigenfertigung!")
          }
          productions.forEach(
            production => {

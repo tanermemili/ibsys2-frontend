@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     if (isAuthenticated) {
       return true;
     } else {
-      this.openDialog("Authentication",'Please login first')
+      this.openDialog("Authentifizierung",'Bitte loggen Sie sich erst ein!')
       this.router.navigate(['login']);
       return false;
     }

@@ -28,7 +28,7 @@ export class AuthService {
       this.isAuthenticatedBool = true;
       return true;
     } else {
-      this.openDialog("Authentication",'Wrong credentials')
+      this.openDialog("Authentifizierung",'Falsche Anmeldedaten')
       this.isAuthenticatedBool = false;
       return false;
     }
