@@ -13,6 +13,7 @@ import { first, tap } from 'rxjs';
 import { DialogOverviewComponent } from "../shared/dialog-overview/dialog-overview.component";
 import { DispositionEigenfertigungArticleInput, DispositionEigenfertigungArticleResult, DispositionEigenfertigungResult } from "./disposition-eigenfertigung.model";
 import { DispositionEigenfertigungService } from "./disposition-eigenfertigung.service";
+import {DialogData} from "../shared/dialog-overview/dialog-overview.model";
 
 
 @Component({
@@ -64,9 +65,9 @@ export class DispositionEigenfertigungComponent implements OnInit {
         this.search();
     }
 
-    openDialog(text: string): void {
+    openDialog(header: string, body: string): void {
         const dialogRef = this.dialog.open(DialogOverviewComponent, {
-            data: text
+            data: new DialogData(header, body)
         })
     }
 
@@ -84,7 +85,7 @@ export class DispositionEigenfertigungComponent implements OnInit {
                         this.dispositionEigenfertigungArticlesP1.length == 0 ||
                         this.dispositionEigenfertigungArticlesP2.length == 0 ||
                         this.dispositionEigenfertigungArticlesP3.length == 0) {
-                        this.openDialog("Please insert first the input.xml");
+                          this.openDialog("Disposition Eigenfertigung","Please insert first the input.xml");
                     }
 
                 })
@@ -98,7 +99,7 @@ export class DispositionEigenfertigungComponent implements OnInit {
                 element.geplanterSicherheitsbestand === null ||
                 element.zusaetzlicheProduktionsauftraege === null
             ) {
-                this.openDialog("Please set first all values!")
+                this.openDialog("Disposition Eigenfertigung","Please set first all values!")
                 throw new Error("Please set first all values!");
             }
             if (this.geplanterSicherheitsbestand.has(element.articleNumber)) {
@@ -124,7 +125,7 @@ export class DispositionEigenfertigungComponent implements OnInit {
             this.dispositionEigenfertigungArticlesP1.length == 0 ||
             this.dispositionEigenfertigungArticlesP2.length == 0 ||
             this.dispositionEigenfertigungArticlesP3.length == 0) {
-            this.openDialog("Please insert first the input.xml");
+            this.openDialog("Disposition Eigenfertigung","Please insert first the input.xml");
         }
 
         this.setProperties(this.dispositionEigenfertigungArticlesP1);

@@ -15,6 +15,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogOverviewComponent} from "../shared/dialog-overview/dialog-overview.component";
+import {DialogData} from "../shared/dialog-overview/dialog-overview.model";
 
 @Component({
   selector: 'app-capacity-planning',
@@ -77,9 +78,9 @@ export class CapacityPlanningComponent implements OnInit {
     this.search();
   }
 
-  openDialog(text: string): void {
-    const dialogRef = this.dialog.open(DialogOverviewComponent,{
-      data: text
+  openDialog(header: string, body: string): void {
+    const dialogRef = this.dialog.open(DialogOverviewComponent, {
+      data: new DialogData(header, body)
     })
   }
 
@@ -91,7 +92,7 @@ export class CapacityPlanningComponent implements OnInit {
          let articles: CapacityPlanningArticle[] = []
          let overviewResult: CapacityPlanningOverview[] = []
          if(productions.length == 0) {
-           this.openDialog("Please proceed with the Disposition Eigenfertigung!")
+           this.openDialog("Capacity Planning","Please proceed with the Disposition Eigenfertigung!")
          }
          productions.forEach(
            production => {
