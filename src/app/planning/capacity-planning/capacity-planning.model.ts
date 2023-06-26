@@ -60,7 +60,6 @@ export class CapacityPlanningArticle {
     this.workstations.set(2, 0)
     this.workstations.set(3, 0)
     this.workstations.set(4, 0)
-    this.workstations.set(5, 0)
     this.workstations.set(6, 0)
     this.workstations.set(7, 0)
     this.workstations.set(8, 0)
