@@ -1,6 +1,6 @@
 <h2>Planung</h2>
 <ng-template matStepLabel>Eingabetabelle</ng-template>
-<p>Vertriebswunsch</p>
+<h3><b>Vertriebswunsch</b></h3>
 <table class="mat-table">
   <tr class="mat-header-row">
     <th class="mat-header-cell">Artikel</th>
@@ -11,8 +11,9 @@
     <td class="mat-cell">{{ item.item.quantity }}</td>
   </tr>
 </table>
+<br />
 
-<p>Direktverkauf</p>
+<h3><b>Direktverkauf</b></h3>
 <table class="mat-table">
   <tr class="mat-header-row">
     <th class="mat-header-cell">Artikel</th>
@@ -33,8 +34,9 @@
     </td>
   </tr>
 </table>
+<br />
 
-<p>Kapazitätsbedarf</p>
+<h3><b>Kapazitätsbedarf</b></h3>
 <table class="mat-table">
   <tr class="mat-header-row">
     <th class="mat-header-cell">Arbeitsplatz</th>
@@ -47,8 +49,9 @@
     <td class="mat-cell">{{ item.workingtime.overtime }}</td>
   </tr>
 </table>
+<br/>
 
-<p>Bestellungen</p>
+<h3><b>Bestellungen</b></h3>
 <table class="mat-table">
   <tr class="mat-header-row">
     <th class="mat-header-cell">Artikel</th>
@@ -61,33 +64,24 @@
     <td class="mat-cell">{{ item.order.modus }}</td>
   </tr>
 </table>
+<br/>
 
-<p>Fertigungsaufträge</p>
+<h3><b>Fertigungsaufträge</b></h3>
 <table cdkDropList (cdkDropListDropped)="drop($event)">
   <tr class="production-header">
     <th>Artikel</th>
     <th>Anzahl</th>
   </tr>
-  <tr
-    cdkDrag
-    class="production-box"
-    *ngFor="let item of (planendData$ | async)?.input?.productionlist; let i = index"
-  >
+  <tr cdkDrag class="production-box" *ngFor="let item of (planendData$ | async)?.input?.productionlist; let i = index">
     <td>{{ item.production.article }}</td>
     <td>{{ item.production.quantity }}</td>
     <td>
-      <button
-        mat-icon-button aria-label="Split"
-        (click)="planendDataState.splitProduction(item)"
-        [disabled]="!planendDataState.canSplit(item)"
-      ><mat-icon>call_split</mat-icon></button>
+      <button mat-icon-button aria-label="Split" (click)="planendDataState.splitProduction(item)"
+        [disabled]="!planendDataState.canSplit(item)"><mat-icon>call_split</mat-icon></button>
     </td>
     <td>
-      <button
-        mat-icon-button aria-label="Split"
-        (click)="planendDataState.mergeProduction(i, item)"
-        [disabled]="!planendDataState.canMerge(item)"
-      ><mat-icon>call_merge</mat-icon></button>
+      <button mat-icon-button aria-label="Split" (click)="planendDataState.mergeProduction(i, item)"
+        [disabled]="!planendDataState.canMerge(item)"><mat-icon>call_merge</mat-icon></button>
     </td>
     <td><mat-icon>drag_indicator</mat-icon></td>
   </tr>

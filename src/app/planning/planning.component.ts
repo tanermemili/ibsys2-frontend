@@ -20,7 +20,7 @@ export class PlanningComponent {
   @ViewChild(DispositionEigenfertigungComponent) dispositionEigenfertigungComponent!: any;
   @ViewChild(ProdprogComponent) prodprogComponent!: any;
   @ViewChild(CapacityPlanningComponent) capacityPlanningComponent!: any;
-  @ViewChild(PlanningComponent) planningComponent!: any;
+  @ViewChild(PlanendComponent) planendComponent!: any;
   tableData: any[] = [
     { artikel: 'P1', dieseWoche: 0, periode1: 0, periode2: 0, periode3: 0, },
     { artikel: 'P2', dieseWoche: 0, periode1: 0, periode2: 0, periode3: 0, },
@@ -81,7 +81,7 @@ export class PlanningComponent {
       }
       case 5: {
         // Eingabetabelle
-        this.planningComponent.startOutput();
+        this.planendComponent.startOutput();
         break;
       }
       default: {

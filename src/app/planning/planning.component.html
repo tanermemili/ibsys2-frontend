@@ -2,7 +2,7 @@
 <mat-stepper orientation="vertical" [animationDuration]="planningService.stepperDuration"
   (selectionChange)="selectionChange($event)">
   <mat-step>
-    <ng-template matStepLabel>Prognose, Produktionseingabe und Lagerprognose</ng-template>
+    <ng-template matStepLabel>Prognose</ng-template>
     <app-forecast></app-forecast>
     <button mat-raised-button color="accent" (click)="clickSaveForecast($event)" matStepperNext>weiter</button>
   </mat-step>
