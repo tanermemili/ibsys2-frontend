@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import log from 'loglevel';
 import { PlanningService, PurchasePartDataType, PurchasePartOutputDataType, QuantityNeedDataType } from '../planning.service';
 import { DialogOverviewComponent } from '../shared/dialog-overview/dialog-overview.component';
+import { DialogData } from '../shared/dialog-overview/dialog-overview.model';
 
 @Component({
   selector: 'app-purchase-part-disposition',
@@ -104,9 +105,9 @@ export class PurchasePartDispositionComponent {
     log.debug('purchasePartsOutput:', this.purchasePartsOutput);
   }
 
-  openDialog(text: string) {
+  openDialog(header: string, body: string): void {
     const dialogRef = this.dialog.open(DialogOverviewComponent, {
-      data: text
-  });
+      data: new DialogData(header, body)
+    })
   }
 }
