@@ -1,1 +1,17 @@
-<h2>Willkommen</h2>
+<mat-form-field>
+  <mat-label>Select a language</mat-label>
+  <mat-select [(ngModel)]="language" disableRipple>
+    <mat-option value="german">German</mat-option>
+    <mat-option value="english">English</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<ng-container *ngIf="language == 'german'">
+  <p>Hallo</p>
+  <p>Willkommen</p>
+</ng-container>
+
+<ng-container *ngIf="language == 'english'">
+  <p>Hello</p>
+  <p>Welcome</p>
+</ng-container>

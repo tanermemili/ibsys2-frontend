@@ -27,11 +27,15 @@ import { DispositionEigenfertigungComponent } from './planning/disposition-eigen
 import { ForecastComponent } from './planning/forecast/forecast.component';
 import { PlanningComponent } from './planning/planning.component';
 import { ProdprogComponent } from './planning/prodprog-prod/prodprog-prod.component';
+import { PlanendComponent } from './planning/planend/planend.component';
+import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { PurchasePartDispositionComponent } from './planning/purchase-part-disposition/purchase-part-disposition.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
 import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.component';
-
+import { CapacityPlanningComponent } from './planning/capacity-planning/capacity-planning.component';
+import {AuthGuard} from "./auth/AuthGuard";
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -48,8 +52,10 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     PurchasePartDispositionComponent,
     MessagesComponent,
     ForecastComponent,
+    PlanendComponent
   ],
   imports: [
+    MatSelectModule,
     DispositionEigenfertigungComponent,
     BrowserModule,
     AppRoutingModule,
@@ -67,11 +73,14 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-MatTabsModule,
-    ProdprogComponent
-
+    MatTabsModule,
+    ProdprogComponent,
+    CapacityPlanningComponent,
+    ProdprogComponent,
+    CdkDropList,
+    CdkDrag
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

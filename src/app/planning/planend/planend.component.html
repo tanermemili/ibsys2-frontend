@@ -1,0 +1,88 @@
+<h2>Planung</h2>
+<ng-template matStepLabel>Eingabetabelle</ng-template>
+<h3><b>Vertriebswunsch</b></h3>
+<table class="mat-table">
+  <tr class="mat-header-row">
+    <th class="mat-header-cell">Artikel</th>
+    <th class="mat-header-cell">Anzahl</th>
+  </tr>
+  <tr *ngFor="let item of (planendData$ | async)?.input?.sellwish" class="mat-row">
+    <td class="mat-cell">{{ item.item.article }}</td>
+    <td class="mat-cell">{{ item.item.quantity }}</td>
+  </tr>
+</table>
+<br />
+
+<h3><b>Direktverkauf</b></h3>
+<table class="mat-table">
+  <tr class="mat-header-row">
+    <th class="mat-header-cell">Artikel</th>
+    <th class="mat-header-cell">Diese Woche</th>
+    <th class="mat-header-cell">Preis/Einheit</th>
+    <th class="mat-header-cell">Strafe</th>
+  </tr>
+  <tr *ngFor="let item of (planendData$ | async)?.input?.selldirect; let i = index" class="mat-row">
+    <td class="mat-cell">{{ item.item.article }}</td>
+    <td class="mat-cell">
+      <input type="number" min="0" (keyup)="updateSellDirect($event, item.item.article, 'quantity')">
+    </td>
+    <td class="mat-cell">
+      <input type="number" min="0" (keyup)="updateSellDirect($event, item.item.article, 'price')">
+    </td>
+    <td class="mat-cell">
+      <input type="number" min="0" (keyup)="updateSellDirect($event, item.item.article, 'penalty')">
+    </td>
+  </tr>
+</table>
+<br />
+
+<h3><b>Kapazitätsbedarf</b></h3>
+<table class="mat-table">
+  <tr class="mat-header-row">
+    <th class="mat-header-cell">Arbeitsplatz</th>
+    <th class="mat-header-cell">Schicht</th>
+    <th class="mat-header-cell">Überstunden</th>
+  </tr>
+  <tr *ngFor="let item of (planendData$ | async)?.input?.workingtimelist" class="mat-row">
+    <td class="mat-cell">{{ item.workingtime.station }}</td>
+    <td class="mat-cell">{{ item.workingtime.shift }}</td>
+    <td class="mat-cell">{{ item.workingtime.overtime }}</td>
+  </tr>
+</table>
+<br/>
+
+<h3><b>Bestellungen</b></h3>
+<table class="mat-table">
+  <tr class="mat-header-row">
+    <th class="mat-header-cell">Artikel</th>
+    <th class="mat-header-cell">Anzahl</th>
+    <th class="mat-header-cell">Liefermodus</th>
+  </tr>
+  <tr *ngFor="let item of (planendData$ | async)?.input?.orderlist" class="mat-row">
+    <td class="mat-cell">{{ item.order.article }}</td>
+    <td class="mat-cell">{{ item.order.quantity }}</td>
+    <td class="mat-cell">{{ item.order.modus }}</td>
+  </tr>
+</table>
+<br/>
+
+<h3><b>Fertigungsaufträge</b></h3>
+<table cdkDropList (cdkDropListDropped)="drop($event)">
+  <tr class="production-header">
+    <th>Artikel</th>
+    <th>Anzahl</th>
+  </tr>
+  <tr cdkDrag class="production-box" *ngFor="let item of (planendData$ | async)?.input?.productionlist; let i = index">
+    <td>{{ item.production.article }}</td>
+    <td>{{ item.production.quantity }}</td>
+    <td>
+      <button mat-icon-button aria-label="Split" (click)="planendDataState.splitProduction(item)"
+        [disabled]="!planendDataState.canSplit(item)"><mat-icon>call_split</mat-icon></button>
+    </td>
+    <td>
+      <button mat-icon-button aria-label="Split" (click)="planendDataState.mergeProduction(i, item)"
+        [disabled]="!planendDataState.canMerge(item)"><mat-icon>call_merge</mat-icon></button>
+    </td>
+    <td><mat-icon>drag_indicator</mat-icon></td>
+  </tr>
+</table>

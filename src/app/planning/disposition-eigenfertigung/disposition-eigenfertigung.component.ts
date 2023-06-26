@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { DispositionEigenfertigungService } from "./disposition-eigenfertigung.service";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
-import { DispositionEigenfertigungArticleInput, DispositionEigenfertigungArticleResult, DispositionEigenfertigungResult } from "./disposition-eigenfertigung.model";
-import { MatTableModule } from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';
-import { first, tap } from 'rxjs';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { DialogOverviewComponent } from "../shared/dialog-overview/dialog-overview.component";
+import { Component, OnInit } from "@angular/core";
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from '@angular/material/card';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { first, tap } from 'rxjs';
+import { DialogOverviewComponent } from "../shared/dialog-overview/dialog-overview.component";
+import { DispositionEigenfertigungArticleInput, DispositionEigenfertigungArticleResult, DispositionEigenfertigungResult } from "./disposition-eigenfertigung.model";
+import { DispositionEigenfertigungService } from "./disposition-eigenfertigung.service";
 
 
 @Component({
@@ -20,13 +20,13 @@ import { MatButtonModule } from "@angular/material/button";
     standalone: true,
     providers: [DispositionEigenfertigungService],
     imports: [
-        CommonModule, 
-        HttpClientModule, 
-        MatCardModule, 
-        MatTableModule, 
-        MatTabsModule, 
-        MatInputModule, 
-        MatFormFieldModule, 
+        CommonModule,
+        HttpClientModule,
+        MatCardModule,
+        MatTableModule,
+        MatTabsModule,
+        MatInputModule,
+        MatFormFieldModule,
         FormsModule,
         MatDialogModule,
         MatButtonModule
@@ -58,14 +58,14 @@ export class DispositionEigenfertigungComponent implements OnInit {
     constructor(
         private readonly dispositionEigenfertigungService: DispositionEigenfertigungService,
         private readonly dialog: MatDialog
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         this.search();
     }
 
     openDialog(text: string): void {
-        const dialogRef = this.dialog.open(DialogOverviewComponent,{
+        const dialogRef = this.dialog.open(DialogOverviewComponent, {
             data: text
         })
     }
@@ -80,11 +80,11 @@ export class DispositionEigenfertigungComponent implements OnInit {
                     this.dispositionEigenfertigungArticlesP2 = this.dispositionEigenfertigungResult[1].articles;
                     this.dispositionEigenfertigungArticlesP3 = this.dispositionEigenfertigungResult[2].articles;
 
-                    if(
+                    if (
                         this.dispositionEigenfertigungArticlesP1.length == 0 ||
                         this.dispositionEigenfertigungArticlesP2.length == 0 ||
                         this.dispositionEigenfertigungArticlesP3.length == 0) {
-                            this.openDialog("Please insert first the input.xml");
+                        this.openDialog("Please insert first the input.xml");
                     }
 
                 })
@@ -94,23 +94,23 @@ export class DispositionEigenfertigungComponent implements OnInit {
 
     setProperties(input: DispositionEigenfertigungArticleResult[]) {
         input.forEach(element => {
-            if(
+            if (
                 element.geplanterSicherheitsbestand === null ||
                 element.zusaetzlicheProduktionsauftraege === null
             ) {
                 this.openDialog("Please set first all values!")
                 throw new Error("Please set first all values!");
             }
-            if(this.geplanterSicherheitsbestand.has(element.articleNumber)) {
+            if (this.geplanterSicherheitsbestand.has(element.articleNumber)) {
                 let currentGelanterSicherheitsbestand: number = this.geplanterSicherheitsbestand.get(element.articleNumber)!
-                this.geplanterSicherheitsbestand.set(element.articleNumber, element.geplanterSicherheitsbestand + currentGelanterSicherheitsbestand)    
+                this.geplanterSicherheitsbestand.set(element.articleNumber, element.geplanterSicherheitsbestand + currentGelanterSicherheitsbestand)
             } else {
                 this.geplanterSicherheitsbestand.set(element.articleNumber, element.geplanterSicherheitsbestand)
             }
 
-            if(this.zusaetzlicheProduktionauftraege.has(element.articleNumber)) {
+            if (this.zusaetzlicheProduktionauftraege.has(element.articleNumber)) {
                 let currentZusaetzlicheProduktionsauftraege: number = this.zusaetzlicheProduktionauftraege.get(element.articleNumber)!
-                this.zusaetzlicheProduktionauftraege.set(element.articleNumber, element.zusaetzlicheProduktionsauftraege + currentZusaetzlicheProduktionsauftraege)    
+                this.zusaetzlicheProduktionauftraege.set(element.articleNumber, element.zusaetzlicheProduktionsauftraege + currentZusaetzlicheProduktionsauftraege)
             } else {
                 this.zusaetzlicheProduktionauftraege.set(element.articleNumber, element.zusaetzlicheProduktionsauftraege);
             }
@@ -120,11 +120,11 @@ export class DispositionEigenfertigungComponent implements OnInit {
 
     create() {
 
-        if(
+        if (
             this.dispositionEigenfertigungArticlesP1.length == 0 ||
             this.dispositionEigenfertigungArticlesP2.length == 0 ||
             this.dispositionEigenfertigungArticlesP3.length == 0) {
-                this.openDialog("Please insert first the input.xml");
+            this.openDialog("Please insert first the input.xml");
         }
 
         this.setProperties(this.dispositionEigenfertigungArticlesP1);
@@ -134,7 +134,7 @@ export class DispositionEigenfertigungComponent implements OnInit {
         let geplanterSicherheitsbestand = Object.fromEntries(this.geplanterSicherheitsbestand);
         let zuesaetzlicheProduktionsauftraege = Object.fromEntries(this.zusaetzlicheProduktionauftraege)
 
-        let dispositionEigenfertigungArticleResult: DispositionEigenfertigungArticleInput = new DispositionEigenfertigungArticleInput(geplanterSicherheitsbestand, zuesaetzlicheProduktionsauftraege);  
+        let dispositionEigenfertigungArticleResult: DispositionEigenfertigungArticleInput = new DispositionEigenfertigungArticleInput(geplanterSicherheitsbestand, zuesaetzlicheProduktionsauftraege);
         console.log(dispositionEigenfertigungArticleResult)
 
         this.dispositionEigenfertigungService.plan(dispositionEigenfertigungArticleResult).subscribe(result => this.search());

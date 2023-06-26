@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { AuthGuard } from "./auth/AuthGuard";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ExportXmlComponent } from './export-xml/export-xml.component';
 import { FutureInwardStockMovementsComponent } from './future-inward-stock-movements/future-inward-stock-movements.component';
@@ -17,18 +17,19 @@ import { WarehouseStockComponent } from './warehouse-stock/warehouse-stock.compo
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'import_xml', component: ImportXmlComponent},
-  { path: 'stock_overview', component: StockOverviewComponent},
-  { path: 'planning', component: PlanningComponent},
-  { path: 'export_xml', component: ExportXmlComponent},
-  { path: 'profile', component: ProfileComponent},
-  { path: 'warehouse_stock', component: WarehouseStockComponent},
-  { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent},
-  { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent},
-  { path: 'prodprog', component: ProdprogComponent},
-  { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent}
-]
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'import_xml', component: ImportXmlComponent, canActivate: [AuthGuard] },
+  { path: 'stock_overview', component: StockOverviewComponent, canActivate: [AuthGuard] },
+  { path: 'planning', component: PlanningComponent, canActivate: [AuthGuard] },
+  { path: 'export_xml', component: ExportXmlComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'warehouse_stock', component: WarehouseStockComponent, canActivate: [AuthGuard] },
+  { path: 'future_inward_stock_movements', component: FutureInwardStockMovementsComponent, canActivate: [AuthGuard] },
+  { path: 'purchase_part_disposition', component: PurchasePartDispositionComponent, canActivate: [AuthGuard] },
+  { path: 'prodprog', component: ProdprogComponent, canActivate: [AuthGuard] },
+  { path: 'disposition-eigenfertigung', component: DispositionEigenfertigungComponent, canActivate: [AuthGuard] },
+];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

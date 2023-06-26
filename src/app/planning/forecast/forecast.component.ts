@@ -10,6 +10,13 @@ import { PlanningComponent } from '../planning.component';
 })
 export class ForecastComponent {
   forecast: ForecastDataType[] = [];
+  displayedColumns = [
+    'article',
+    'periodN',
+    'periodNplusOne',
+    'periodNplusTwo',
+    'periodNplusThree'
+  ];
 
   constructor(private planningService: PlanningService, public planningComponent: PlanningComponent) {}
 
