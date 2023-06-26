@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import log from 'loglevel';
 import { PlanningService, PurchasePartDataType, PurchasePartOutputDataType, QuantityNeedDataType } from '../planning.service';
+import { DialogOverviewComponent } from '../shared/dialog-overview/dialog-overview.component';
 
 @Component({
   selector: 'app-purchase-part-disposition',
@@ -30,7 +32,7 @@ export class PurchasePartDispositionComponent {
     'orderColor'
   ];
 
-  constructor(private planningService: PlanningService) { }
+  constructor(private planningService: PlanningService, private readonly dialog: MatDialog) { }
 
   ngOnInit() {
     this.getPurchasePartsAndQuantityNeed();
@@ -100,5 +102,11 @@ export class PurchasePartDispositionComponent {
       }
     });
     log.debug('purchasePartsOutput:', this.purchasePartsOutput);
+  }
+
+  openDialog(text: string) {
+    const dialogRef = this.dialog.open(DialogOverviewComponent, {
+      data: text
+  });
   }
 }

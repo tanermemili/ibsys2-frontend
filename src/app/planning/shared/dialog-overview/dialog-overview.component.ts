@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatDialog, MatDialogRef, MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-overview-component',
@@ -11,5 +11,5 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./dialog-overview.component.css']
 })
 export class DialogOverviewComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: string){}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: string) { }
 }
