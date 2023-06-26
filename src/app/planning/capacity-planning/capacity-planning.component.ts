@@ -105,7 +105,7 @@ export class CapacityPlanningComponent implements OnInit {
              result2.workingTimePlan.forEach(element => {
                  articles.forEach(article => {
                    if(article.article == element.articleNumber) {
-                     article.workstations.set(element.workstationNumber, 20)
+                     article.workstations.set(element.workstationNumber, element.workingTime)
                    }
                  })
              })
