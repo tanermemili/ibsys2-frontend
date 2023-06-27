@@ -82,7 +82,9 @@ export class PurchasePartDispositionComponent {
   }
 
   public savePurchaseParts() {
-    this.buildJsonOutput();
+    let json = this.mergedPurchasePartsQuantityNeed;
+    this.buildJsonOutput(json);
+    log.debug(this.mergedPurchasePartsQuantityNeed);
     this.planningService.savePurchaseParts(this.purchasePartsOutput).subscribe({
       error: (e) => log.debug(e),
       complete: () => {
@@ -91,9 +93,10 @@ export class PurchasePartDispositionComponent {
     });
   }
 
-  private buildJsonOutput() {
+  private buildJsonOutput(json: any) {
+    log.debug('Json', json);
     this.purchasePartsOutput = [];
-    this.purchaseParts.forEach((purchasePart: any, index: any) => {
+    json.forEach((purchasePart: any, index: any) => {
       if (purchasePart.orderType != null) {
         this.purchasePartsOutput.push({
           article: purchasePart.itemNumber,
